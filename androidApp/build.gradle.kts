@@ -17,11 +17,45 @@ android {
             isMinifyEnabled = false
         }
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.0.2"
+    }
 }
 
 dependencies {
     implementation(project(":shared"))
-    implementation("com.google.android.material:material:1.3.0")
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    // AndroidX
+    implementation(libs.androidCoreKtx)
+    implementation(libs.androidActivityKtx)
+    implementation(libs.androidLifecycleKtx)
+    implementation(libs.androidViewModelKtx)
+    implementation(libs.androidMaterial)
+
+    // Jetpack Compose
+    implementation(libs.composeUi)
+    implementation(libs.composeMaterial)
+    implementation(libs.composeToolingPreview)
+    implementation(libs.composeActivity)
+    implementation(libs.composeFoundation)
+    implementation(libs.composeNavigation)
+    implementation(libs.composeInsets)
+    debugImplementation(libs.composeTooling)
+
+    // Kotlin coroutines
+    implementation(libs.kotlinCoroutines)
+    implementation(libs.kotlinCoroutinesAndroid)
+
+    // Koin DI
+    implementation(libs.koin)
+    implementation(libs.koinAndroid)
+    implementation(libs.koinCompose)
+
+    // Database
+    implementation(libs.sqlDelightAndroid)
+    implementation(libs.sqlDelightCoroutinesExtensions)
 }
