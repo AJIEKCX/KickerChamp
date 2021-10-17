@@ -3,13 +3,10 @@ package ru.kontur.kickerchamp.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.Text
-import ru.kontur.kickerchamp.Greeting
+import com.google.accompanist.insets.ProvideWindowInsets
+import ru.kontur.kickerchamp.MainScreenStore
+import ru.kontur.kickerchamp.android.main.MainScreen
 import ru.kontur.kickerchamp.android.theme.AppTheme
-
-fun greet(): String {
-    return Greeting().greeting()
-}
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +14,9 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             AppTheme {
-                Text(greet())
+                ProvideWindowInsets {
+                    MainScreen(MainScreenStore())
+                }
             }
         }
     }
