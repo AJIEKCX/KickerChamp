@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("com.squareup.sqldelight")
 }
 
 kotlin {
@@ -24,6 +25,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(libs.sqlDelightRuntime)
+                implementation(libs.sqlDelightCoroutinesExtensions)
                 implementation(libs.kotlinCoroutines)
             }
         }
@@ -33,14 +36,22 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.sqlDelightAndroid)
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting
+        val iosMain by getting {
+            dependencies {
+                implementation(libs.sqlDelightNative)
+            }
+        }
         val iosTest by getting
     }
 }
@@ -51,5 +62,11 @@ android {
     defaultConfig {
         minSdk = 23
         targetSdk = 31
+    }
+}
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "ru.kontur.kickerchamp.db"
     }
 }

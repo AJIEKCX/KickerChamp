@@ -54,8 +54,4 @@ dependencies {
     implementation(libs.koin)
     implementation(libs.koinAndroid)
     implementation(libs.koinCompose)
-
-    // Database
-    implementation(libs.sqlDelightAndroid)
-    implementation(libs.sqlDelightCoroutinesExtensions)
 }

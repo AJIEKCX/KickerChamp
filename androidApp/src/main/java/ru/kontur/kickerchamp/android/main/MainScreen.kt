@@ -5,7 +5,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.tooling.preview.Preview
 import ru.kontur.kickerchamp.BlueTeam
 import ru.kontur.kickerchamp.GameState
 import ru.kontur.kickerchamp.MainScreenStore
@@ -14,10 +13,9 @@ import ru.kontur.kickerchamp.android.main.widget.PlayersWidget
 import ru.kontur.kickerchamp.android.main.widget.ScoreWidget
 import ru.kontur.kickerchamp.android.main.widget.StartGameWidget
 import ru.kontur.kickerchamp.android.main.widget.WinnerWidget
-import ru.kontur.kickerchamp.android.theme.AppTheme
 
 @Composable
-fun MainScreen(store: MainScreenStore) {
+fun MainScreen(store: MainScreenStore, onHighScoresClick: () -> Unit) {
     val state by store.state.collectAsState()
 
     if (state.dialogSate != null) {
@@ -45,6 +43,7 @@ fun MainScreen(store: MainScreenStore) {
             is GameState.NonStarted -> {
                 StartGameWidget(
                     isStartButtonEnabled = gameState.isStartButtonEnabled,
+                    onHighScoresClicked = onHighScoresClick,
                     onStartGameClicked = store::onStartGameClicked
                 )
             }
@@ -57,17 +56,10 @@ fun MainScreen(store: MainScreenStore) {
                         MaterialTheme.colors.secondary
                     },
                     onRestartGameClicked = store::onRestartGameClicked,
-                    onRevengeClicked = store::onRevengeClicked
+                    onRevengeClicked = store::onRevengeClicked,
+                    onHighScoresClicked = onHighScoresClick
                 )
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun MainScreenPreview() {
-    AppTheme {
-        MainScreen(MainScreenStore())
     }
 }

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -23,6 +24,7 @@ fun WinnerWidget(
     color: Color,
     onRestartGameClicked: () -> Unit,
     onRevengeClicked: () -> Unit,
+    onHighScoresClicked: () -> Unit
 ) {
     Box(Modifier.fillMaxSize()) {
         Column(
@@ -35,13 +37,24 @@ fun WinnerWidget(
                 color = color,
             )
             Spacer(Modifier.height(16.dp))
-            Button(onClick = onRestartGameClicked) {
-                Text("Start new game", Modifier.padding(vertical = 8.dp, horizontal = 32.dp))
+            Button(
+                modifier = Modifier.width(200.dp),
+                onClick = onRestartGameClicked
+            ) {
+                Text("Start new game", Modifier.padding(vertical = 8.dp))
             }
             Spacer(Modifier.height(16.dp))
-            Button(onClick = onRevengeClicked) {
-                Text("Revenge", Modifier.padding(vertical = 8.dp, horizontal = 32.dp))
+            Button(
+                modifier = Modifier.width(200.dp),
+                onClick = onRevengeClicked
+            ) {
+                Text("Revenge", Modifier.padding(vertical = 8.dp))
             }
+            Spacer(Modifier.height(16.dp))
+            HighScoresButton(
+                modifier = Modifier.width(200.dp),
+                onClick = onHighScoresClicked
+            )
         }
     }
 }
@@ -50,6 +63,6 @@ fun WinnerWidget(
 @Composable
 fun WinnerWidgetPreview() {
     AppTheme {
-        WinnerWidget("Red wins", Color.Red, {}, {})
+        WinnerWidget("Red wins", Color.Red, {}, {}, {})
     }
 }
