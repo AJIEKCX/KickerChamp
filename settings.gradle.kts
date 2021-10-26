@@ -46,7 +46,7 @@ dependencyResolutionManagement {
             alias("sqlDelightRuntime").to("com.squareup.sqldelight:runtime:$sqlDelightVersion")
             alias("sqlDelightAndroid").to("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
             alias("sqlDelightNative").to("com.squareup.sqldelight:native-driver:$sqlDelightVersion")
-            alias("sqlDelightCoroutinesExtensions").to("com.squareup.sqldelight:coroutines-extensions-jvm:$sqlDelightVersion")
+            alias("sqlDelightCoroutinesExtensions").to("com.squareup.sqldelight:coroutines-extensions:$sqlDelightVersion")
         }
     }
 }
