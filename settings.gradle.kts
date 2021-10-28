@@ -43,8 +43,10 @@ dependencyResolutionManagement {
             alias("koinAndroid").to("io.insert-koin:koin-android:$koinVersion")
             alias("koinCompose").to("io.insert-koin:koin-androidx-compose:$koinVersion")
 
+            alias("sqlDelightRuntime").to("com.squareup.sqldelight:runtime:$sqlDelightVersion")
             alias("sqlDelightAndroid").to("com.squareup.sqldelight:android-driver:$sqlDelightVersion")
-            alias("sqlDelightCoroutinesExtensions").to("com.squareup.sqldelight:coroutines-extensions-jvm:$sqlDelightVersion")
+            alias("sqlDelightNative").to("com.squareup.sqldelight:native-driver:$sqlDelightVersion")
+            alias("sqlDelightCoroutinesExtensions").to("com.squareup.sqldelight:coroutines-extensions:$sqlDelightVersion")
         }
     }
 }
