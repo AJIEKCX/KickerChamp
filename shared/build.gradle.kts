@@ -7,6 +7,7 @@ plugins {
 }
 
 kotlin {
+    jvm("desktop")
     android()
 
     val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
@@ -28,6 +29,7 @@ kotlin {
                 implementation(libs.sqlDelightRuntime)
                 implementation(libs.sqlDelightCoroutinesExtensions)
                 implementation(libs.kotlinCoroutines)
+                implementation(libs.koin)
             }
         }
         val commonTest by getting {
@@ -52,16 +54,28 @@ kotlin {
                 implementation(libs.sqlDelightNative)
             }
         }
+        val desktopMain by getting {
+            dependencies {
+                implementation("com.squareup.sqldelight:sqlite-driver:1.5.2")
+            }
+        }
         val iosTest by getting
     }
 }
 
 android {
     compileSdk = 31
+
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     defaultConfig {
         minSdk = 23
         targetSdk = 31
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
 

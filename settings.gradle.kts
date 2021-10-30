@@ -3,12 +3,12 @@ pluginManagement {
         google()
         gradlePluginPortal()
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
 
 rootProject.name = "KickerChamp"
-include(":androidApp")
-include(":shared")
+include(":androidApp", ":shared", ":shared-ui", ":desktop")
 
 enableFeaturePreview("VERSION_CATALOGS")
 
