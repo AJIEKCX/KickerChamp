@@ -36,6 +36,9 @@ dependencyResolutionManagement {
             alias("composeNavigation").to("androidx.navigation:navigation-compose:2.4.0-alpha08")
             alias("composeInsets").to("com.google.accompanist:accompanist-insets:0.18.0")
 
+            alias("odysseyCore").to("io.github.alexgladkov:odyssey-core:0.1.4")
+            alias("odysseyCompose").to("io.github.alexgladkov:odyssey-compose:0.1.4")
+
             alias("kotlinCoroutines").to("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
             alias("kotlinCoroutinesAndroid").to("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 

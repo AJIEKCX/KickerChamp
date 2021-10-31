@@ -17,6 +17,8 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation(libs.koin)
+                implementation(libs.odysseyCore)
+                implementation(libs.odysseyCompose)
                 implementation(project(":shared"))
                 implementation(project(":shared-ui"))
             }
