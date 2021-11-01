@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		8D26021E2736743500F4F7B5 /* HighScoreStoreWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D26021D2736743500F4F7B5 /* HighScoreStoreWrapper.swift */; };
+		8D29D178272FB4E90049C018 /* MainScreenStoreWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29D177272FB4E90049C018 /* MainScreenStoreWrapper.swift */; };
+		8D29D17A272FC2840049C018 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29D179272FC2840049C018 /* PlayerView.swift */; };
+		8D615BA627330BE800FD24C6 /* Collection+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D615BA527330BE800FD24C6 /* Collection+Empty.swift */; };
+		8D615BA92733149800FD24C6 /* NonStartedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D615BA82733149800FD24C6 /* NonStartedGameView.swift */; };
+		8D615BAB2733A3D900FD24C6 /* PlayerEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D615BAA2733A3D900FD24C6 /* PlayerEditView.swift */; };
+		8D615BAD2733C86500FD24C6 /* StartedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D615BAC2733C86500FD24C6 /* StartedGameView.swift */; };
+		8D615BB22733D37800FD24C6 /* RandomNameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D615BB12733D37800FD24C6 /* RandomNameGenerator.swift */; };
+		8D615BB52733E48B00FD24C6 /* FinishedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D615BB42733E48B00FD24C6 /* FinishedGameView.swift */; };
+		8D63BBBC2734F8E100DDED70 /* HighScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63BBBB2734F8E100DDED70 /* HighScoresView.swift */; };
+		8DD97F3F27397BB3007F5F34 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD97F3E27397BB3007F5F34 /* Database.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +40,17 @@
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D26021D2736743500F4F7B5 /* HighScoreStoreWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreStoreWrapper.swift; sourceTree = "<group>"; };
+		8D29D177272FB4E90049C018 /* MainScreenStoreWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenStoreWrapper.swift; sourceTree = "<group>"; };
+		8D29D179272FC2840049C018 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		8D615BA527330BE800FD24C6 /* Collection+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Empty.swift"; sourceTree = "<group>"; };
+		8D615BA82733149800FD24C6 /* NonStartedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonStartedGameView.swift; sourceTree = "<group>"; };
+		8D615BAA2733A3D900FD24C6 /* PlayerEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEditView.swift; sourceTree = "<group>"; };
+		8D615BAC2733C86500FD24C6 /* StartedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartedGameView.swift; sourceTree = "<group>"; };
+		8D615BB12733D37800FD24C6 /* RandomNameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNameGenerator.swift; sourceTree = "<group>"; };
+		8D615BB42733E48B00FD24C6 /* FinishedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedGameView.swift; sourceTree = "<group>"; };
+		8D63BBBB2734F8E100DDED70 /* HighScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresView.swift; sourceTree = "<group>"; };
+		8DD97F3E27397BB3007F5F34 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +84,9 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				7555FF82242A565900829871 /* ContentView.swift */,
+				8DD97F4127397C0B007F5F34 /* Helpers */,
+				8DD97F4027397BFC007F5F34 /* Model */,
+				8D29D17B272FC2970049C018 /* Views */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 			);
@@ -74,6 +98,79 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D29D17B272FC2970049C018 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7555FF82242A565900829871 /* ContentView.swift */,
+				8D615BAF2733CDC600FD24C6 /* Game */,
+				8D63BBBA2734F8BD00DDED70 /* High Scores */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8D615BAE2733CDBE00FD24C6 /* Started */ = {
+			isa = PBXGroup;
+			children = (
+				8D615BAC2733C86500FD24C6 /* StartedGameView.swift */,
+				8D615BAA2733A3D900FD24C6 /* PlayerEditView.swift */,
+			);
+			path = Started;
+			sourceTree = "<group>";
+		};
+		8D615BAF2733CDC600FD24C6 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				8D615BB32733E47100FD24C6 /* Finished */,
+				8D615BB02733CDD800FD24C6 /* NonStarted */,
+				8D615BAE2733CDBE00FD24C6 /* Started */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		8D615BB02733CDD800FD24C6 /* NonStarted */ = {
+			isa = PBXGroup;
+			children = (
+				8D615BA82733149800FD24C6 /* NonStartedGameView.swift */,
+				8D29D179272FC2840049C018 /* PlayerView.swift */,
+			);
+			path = NonStarted;
+			sourceTree = "<group>";
+		};
+		8D615BB32733E47100FD24C6 /* Finished */ = {
+			isa = PBXGroup;
+			children = (
+				8D615BB42733E48B00FD24C6 /* FinishedGameView.swift */,
+			);
+			path = Finished;
+			sourceTree = "<group>";
+		};
+		8D63BBBA2734F8BD00DDED70 /* High Scores */ = {
+			isa = PBXGroup;
+			children = (
+				8D63BBBB2734F8E100DDED70 /* HighScoresView.swift */,
+			);
+			path = "High Scores";
+			sourceTree = "<group>";
+		};
+		8DD97F4027397BFC007F5F34 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8DD97F3E27397BB3007F5F34 /* Database.swift */,
+				8D29D177272FB4E90049C018 /* MainScreenStoreWrapper.swift */,
+				8D26021D2736743500F4F7B5 /* HighScoreStoreWrapper.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DD97F4127397C0B007F5F34 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8D615BA527330BE800FD24C6 /* Collection+Empty.swift */,
+				8D615BB12733D37800FD24C6 /* RandomNameGenerator.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,8 +263,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D615BB52733E48B00FD24C6 /* FinishedGameView.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				8D615BAB2733A3D900FD24C6 /* PlayerEditView.swift in Sources */,
+				8D615BB22733D37800FD24C6 /* RandomNameGenerator.swift in Sources */,
+				8D29D178272FB4E90049C018 /* MainScreenStoreWrapper.swift in Sources */,
+				8D615BA92733149800FD24C6 /* NonStartedGameView.swift in Sources */,
+				8D63BBBC2734F8E100DDED70 /* HighScoresView.swift in Sources */,
+				8D615BAD2733C86500FD24C6 /* StartedGameView.swift in Sources */,
+				8D26021E2736743500F4F7B5 /* HighScoreStoreWrapper.swift in Sources */,
+				8D615BA627330BE800FD24C6 /* Collection+Empty.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				8DD97F3F27397BB3007F5F34 /* Database.swift in Sources */,
+				8D29D17A272FC2840049C018 /* PlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +333,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -280,7 +388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -295,6 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VEWAJ43QEN;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -307,7 +416,7 @@
 					"-framework",
 					shared,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosApp;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kickerchamp.kontur.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -319,6 +428,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VEWAJ43QEN;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -331,7 +441,7 @@
 					"-framework",
 					shared,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosApp;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kickerchamp.kontur.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
