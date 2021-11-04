@@ -34,18 +34,3 @@ class MainScreenStoreWrapper: ObservableObject {
     }
   }
 }
-
-extension MainScreenState {
-  var isStartButtonEnabled: Bool {
-    guard let isStartButtonEnabled = (gameState as? GameState.NonStarted)?.isStartButtonEnabled else {
-      return false
-    }
-    return isStartButtonEnabled
-  }
-}
-
-extension Collection {
-  var nonEmpty: Self? {
-    isEmpty ? nil : self
-  }
-}
