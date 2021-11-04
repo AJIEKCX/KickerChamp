@@ -23,6 +23,8 @@ struct NonStartedGameView: View {
             onHighScoresClicked: {}
           )
         }
+        .padding(.top)
+        .background(Material.thin)
       } else {
         VStack {
           ButtonsGroup(
@@ -31,6 +33,8 @@ struct NonStartedGameView: View {
             onHighScoresClicked: {}
           )
         }
+        .padding(.top)
+        .background(Material.thick)
       }
     }
   }
@@ -47,14 +51,14 @@ struct ButtonsGroup: View {
         action: { onStartGameClicked() }
       )
         .disabled(!isStartButtonEnabled)
-        .buttonStyle(.borderedProminent)
         .frame(maxWidth: .infinity)
+        .buttonStyle(.borderedProminent)
       Button(
         "High scores",
         action: { onHighScoresClicked() }
       )
-        .padding()
         .frame(maxWidth: .infinity)
+        .buttonStyle(.bordered)
     }
   }
 }

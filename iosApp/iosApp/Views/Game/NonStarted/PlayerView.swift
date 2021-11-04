@@ -3,13 +3,24 @@ import shared
 
 struct PlayerView: View {
   let player: Player
+  let randomize: () -> Void
   @Binding var name: String
 
   var body: some View {
     VStack(alignment: .leading) {
-      Text(title(for: player))
-        .foregroundColor(color(for: player))
+      HStack {
+        Text(title(for: player))
+          .foregroundColor(color(for: player))
+        Spacer()
+        Button(
+          "🎲",
+          action: randomize
+        )
+          .buttonStyle(.bordered)
+          .controlSize(.mini)
+      }
       TextField("Name", text: $name, prompt: Text("Name"))
+        .textFieldStyle(.roundedBorder)
     }
   }
 
@@ -46,10 +57,12 @@ struct PlayerView_Previews: PreviewProvider {
     Group {
       PlayerView(
         player: BlueForward(name: "Johnny"),
+        randomize: {},
         name: $name
       )
       PlayerView(
         player: RedDefender(name: "Jacky"),
+        randomize: {},
         name: $name
       )
     }

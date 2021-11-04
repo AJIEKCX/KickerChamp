@@ -12,10 +12,12 @@ struct PlayerEditView: View {
           .padding(.bottom)
         PlayerView(
           player: wrapper.state.blueForward,
+          randomize: { wrapper.randomizeName(for: wrapper.state.blueForward) },
           name: wrapper.state.blueForward.bindName(to: wrapper.store)
         )
         PlayerView(
           player: wrapper.state.blueDefender,
+          randomize: { wrapper.randomizeName(for: wrapper.state.blueDefender) },
           name: wrapper.state.blueDefender.bindName(to: wrapper.store)
         )
       }.padding()
@@ -25,10 +27,12 @@ struct PlayerEditView: View {
           .padding(.bottom)
         PlayerView(
           player: wrapper.state.redForward,
+          randomize: { wrapper.randomizeName(for: wrapper.state.redForward) },
           name: wrapper.state.redForward.bindName(to: wrapper.store)
         )
         PlayerView(
           player: wrapper.state.redDefender,
+          randomize: { wrapper.randomizeName(for: wrapper.state.redDefender) },
           name: wrapper.state.redDefender.bindName(to: wrapper.store)
         )
       }

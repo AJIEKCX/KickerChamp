@@ -8,6 +8,8 @@ class MainScreenStoreWrapper: ObservableObject {
     )
   )
 
+  private var generator = RandomNameGenerator()
+
   private var stateWatcher: Closeable?
 
   @Published
@@ -32,5 +34,9 @@ class MainScreenStoreWrapper: ObservableObject {
     stateWatcher = store.watchState().watch { [weak self] state in
       self?.state = state
     }
+  }
+
+  func randomizeName(for player: Player) {
+    store.onPlayerNameChanged(player: player, name: generator.generate())
   }
 }
