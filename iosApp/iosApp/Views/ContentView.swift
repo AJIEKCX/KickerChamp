@@ -12,7 +12,7 @@ struct ContentView: View {
         isStartButtonEnabled: nonStarted.isStartButtonEnabled
       )
     } else if let started = wrapper.state.gameState as? GameState.Started {
-      Text("Started")
+      StartedGameView(wrapper: wrapper, state: started)
     } else if let finished = wrapper.state.gameState as? GameState.Finished {
       Text("Finished")
     }
