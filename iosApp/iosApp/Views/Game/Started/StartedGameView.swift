@@ -11,24 +11,24 @@ struct StartedGameView: View {
   var body: some View {
     VStack {
       VStack {
-        PlayerScoreView(
-          name: "Blue",
-          color: .blue,
-          onIncrement: wrapper.store.onIncrementBlue,
-          onDecrement: {}, // :(
-          onSet: { _ in }, // :(
-          score: state.blueScore
-        )
+        //        PlayerScoreView(
+        //          name: "Blue",
+        //          color: .blue,
+        //          onIncrement: wrapper.store.onIncrementBlue,
+        //          onDecrement: wrapper.store.onDecrementBlue,
+        //          onSet: { wrapper.store.onSetScoreBlue(score: $0) },
+        //          score: state.blueScore
+        //        )
       }
-      Spacer()
       VStack {
         PlayerScoreView(
           name: "Red",
           color: .red,
           onIncrement: wrapper.store.onIncrementRed,
-          onDecrement: {}, // :(
-          onSet: { _ in }, // :(
+          onDecrement: wrapper.store.onDecrementRed,
+          onSet: { wrapper.store.onSetScoreRed(score: $0) },
           score: state.redScore
+          //          score: Binding(get: { Float(state.redScore) }, set: { wrapper.store.onSetScoreRed(score: Int32($0)) })
         )
       }
     }
@@ -42,6 +42,10 @@ struct PlayerScoreView: View {
   let onDecrement: () -> Void
   let onSet: (Int32) -> Void
   let score: Int32
+
+  private var winScore: Int {
+    Int(MainScreenStore.companion.WIN_SCORE)
+  }
 
   var body: some View {
     VStack {
@@ -69,15 +73,21 @@ struct PlayerScoreView: View {
             .disabled(score > 9)
         }
         .controlSize(.large)
-        HStack {
-          ForEach(0..<10) { number in
+        LazyVGrid(
+          columns: Array(
+            repeating: GridItem(.adaptive(minimum: 40, maximum: 60)),
+            count: 6
+          ),
+          alignment: .center
+        ) {
+          ForEach(0..<(winScore+1)) { number in
             Button("\(number)", action: {
               onSet(Int32(number))
             })
               .buttonStyle(.bordered)
               .disabled(number == score)
+              .lineLimit(1)
           }
-          .frame(maxWidth: .infinity)
         }
       }
     }
@@ -88,6 +98,7 @@ struct PlayerScoreView: View {
 struct StartedGameView_Previews: PreviewProvider {
   static var previews: some View {
     StartedGameView(wrapper: .init(), state: .init(blueScore: 6, redScore: 4))
-      .previewInterfaceOrientation(.landscapeLeft)
+      .previewDevice("iPod touch (7th generation)")
+      .previewInterfaceOrientation(.portrait)
   }
 }

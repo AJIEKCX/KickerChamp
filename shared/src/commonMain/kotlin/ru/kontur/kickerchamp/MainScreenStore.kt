@@ -19,7 +19,22 @@ class MainScreenStore(
     fun onIncrementRed() {
         val gameState = state.value.gameState
         if (gameState is GameState.Started) {
-            val newGameState = gameState.copy(redScore = gameState.redScore + 1)
+            onSetScoreRed(gameState.redScore + 1)
+        }
+    }
+
+    fun onDecrementRed() {
+        val gameState = state.value.gameState
+        if (gameState is GameState.Started) {
+            onSetScoreRed(gameState.redScore - 1)
+        }
+    }
+
+    fun onSetScoreRed(score: Int) {
+        if (score <= 0 || score > WIN_SCORE) return
+        val gameState = state.value.gameState
+        if (gameState is GameState.Started) {
+            val newGameState = gameState.copy(redScore = score)
             _state.value = state.value.copy(gameState = newGameState)
             checkGameEnded(newGameState)
         }
@@ -28,7 +43,22 @@ class MainScreenStore(
     fun onIncrementBlue() {
         val gameState = state.value.gameState
         if (gameState is GameState.Started) {
-            val newGameState = gameState.copy(blueScore = gameState.blueScore + 1)
+            onSetScoreBlue(gameState.blueScore + 1)
+        }
+    }
+
+    fun onDecrementBlue() {
+        val gameState = state.value.gameState
+        if (gameState is GameState.Started) {
+            onSetScoreBlue(gameState.blueScore - 1)
+        }
+    }
+
+    fun onSetScoreBlue(score: Int) {
+        if (score <= 0 || score > WIN_SCORE) return
+        val gameState = state.value.gameState
+        if (gameState is GameState.Started) {
+            val newGameState = gameState.copy(blueScore = score)
             _state.value = state.value.copy(gameState = newGameState)
             checkGameEnded(newGameState)
         }
@@ -127,6 +157,6 @@ class MainScreenStore(
     }
 
     companion object {
-        private const val WIN_SCORE = 10
+        const val WIN_SCORE = 10
     }
 }

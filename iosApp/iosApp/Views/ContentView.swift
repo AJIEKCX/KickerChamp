@@ -6,15 +6,21 @@ struct ContentView: View {
   var wrapper: MainScreenStoreWrapper
 
   var body: some View {
-    if let nonStarted = wrapper.state.gameState as? GameState.NonStarted {
-      NonStartedGameView(
-        wrapper: wrapper,
-        isStartButtonEnabled: nonStarted.isStartButtonEnabled
-      )
-    } else if let started = wrapper.state.gameState as? GameState.Started {
-      StartedGameView(wrapper: wrapper, state: started)
-    } else if let finished = wrapper.state.gameState as? GameState.Finished {
-      FinishedGameView(wrapper: wrapper, state: finished)
+    NavigationView {
+      if let nonStarted = wrapper.state.gameState as? GameState.NonStarted {
+        NonStartedGameView(
+          wrapper: wrapper,
+          isStartButtonEnabled: nonStarted.isStartButtonEnabled
+//            NavigationLink("High scores", destination: HighScoresView())
+        )
+          .navigationBarTitle("KickerChamp", displayMode: .inline)
+      } else if let started = wrapper.state.gameState as? GameState.Started {
+        StartedGameView(wrapper: wrapper, state: started)
+          .navigationTitle("Game ongoing")
+      } else if let finished = wrapper.state.gameState as? GameState.Finished {
+        FinishedGameView(wrapper: wrapper, state: finished)
+          .navigationTitle("Finished game!")
+      }
     }
   }
 }

@@ -17,6 +17,7 @@
 		8D615BAD2733C86500FD24C6 /* StartedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D615BAC2733C86500FD24C6 /* StartedGameView.swift */; };
 		8D615BB22733D37800FD24C6 /* RandomNameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D615BB12733D37800FD24C6 /* RandomNameGenerator.swift */; };
 		8D615BB52733E48B00FD24C6 /* FinishedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D615BB42733E48B00FD24C6 /* FinishedGameView.swift */; };
+		8D63BBBC2734F8E100DDED70 /* HighScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63BBBB2734F8E100DDED70 /* HighScoresView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,7 @@
 		8D615BAC2733C86500FD24C6 /* StartedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartedGameView.swift; sourceTree = "<group>"; };
 		8D615BB12733D37800FD24C6 /* RandomNameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNameGenerator.swift; sourceTree = "<group>"; };
 		8D615BB42733E48B00FD24C6 /* FinishedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedGameView.swift; sourceTree = "<group>"; };
+		8D63BBBB2734F8E100DDED70 /* HighScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +100,9 @@
 		8D29D17B272FC2970049C018 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8D63BBBA2734F8BD00DDED70 /* High Scores */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				8D615BAF2733CDC600FD24C6 /* Game */,
+				8D63BBBA2734F8BD00DDED70 /* High Scores */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,6 +146,7 @@
 		8D63BBBA2734F8BD00DDED70 /* High Scores */ = {
 			isa = PBXGroup;
 			children = (
+				8D63BBBB2734F8E100DDED70 /* HighScoresView.swift */,
 			);
 			path = "High Scores";
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				8D615BB22733D37800FD24C6 /* RandomNameGenerator.swift in Sources */,
 				8D29D178272FB4E90049C018 /* MainScreenStoreWrapper.swift in Sources */,
 				8D615BA92733149800FD24C6 /* NonStartedGameView.swift in Sources */,
+				8D63BBBC2734F8E100DDED70 /* HighScoresView.swift in Sources */,
 				8D615BAD2733C86500FD24C6 /* StartedGameView.swift in Sources */,
 				8D615BA627330BE800FD24C6 /* Collection+Empty.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,

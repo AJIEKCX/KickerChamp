@@ -53,12 +53,15 @@ struct ButtonsGroup: View {
         .disabled(!isStartButtonEnabled)
         .frame(maxWidth: .infinity)
         .buttonStyle(.borderedProminent)
-      Button(
-        "High scores",
-        action: { onHighScoresClicked() }
-      )
-        .frame(maxWidth: .infinity)
-        .buttonStyle(.bordered)
+      NavigationLink(destination: HighScoresView()) {
+        Text("High Scores")
+      }
+      .buttonStyle(.bordered)
+//      Button(
+//        "High scores",
+//        action: { onHighScoresClicked() }
+//      )
+//        .frame(maxWidth: .infinity)
     }
   }
 }

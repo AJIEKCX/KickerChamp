@@ -17,8 +17,10 @@ struct FinishedGameView: View {
       Button("Revenge", action: { wrapper.store.onRevengeClicked() })
         .buttonStyle(.bordered)
         .tint(color(for: state.winnerTeam))
-      Button("High scores", action: { })
-        .buttonStyle(.bordered)
+      NavigationLink(destination: HighScoresView()) {
+        Text("High scores")
+      }
+      .buttonStyle(.bordered)
     }
   }
 
