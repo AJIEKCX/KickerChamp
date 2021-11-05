@@ -14,7 +14,7 @@ struct ContentView: View {
     } else if let started = wrapper.state.gameState as? GameState.Started {
       StartedGameView(wrapper: wrapper, state: started)
     } else if let finished = wrapper.state.gameState as? GameState.Finished {
-      Text("Finished")
+      FinishedGameView(wrapper: wrapper, state: finished)
     }
   }
 }
