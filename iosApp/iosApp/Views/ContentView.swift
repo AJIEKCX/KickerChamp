@@ -20,6 +20,7 @@ struct ContentView: View {
           .navigationTitle("Finished game!")
       }
     }
+    .navigationViewStyle(.stack)
   }
 }
 
