@@ -2,7 +2,7 @@ import SwiftUI
 import shared
 
 struct NonStartedGameView: View {
-  @ObservedObject
+  @EnvironmentObject
   var wrapper: MainScreenStoreWrapper
 
   @Environment(\.verticalSizeClass)
@@ -13,7 +13,7 @@ struct NonStartedGameView: View {
   var body: some View {
     VStack {
       ScrollView {
-        PlayerEditView(wrapper: wrapper)
+        PlayerEditView()
       }
       if verticalSizeClass == .compact {
         HStack {
@@ -34,7 +34,7 @@ struct NonStartedGameView: View {
           )
         }
         .padding(.top)
-        .background(Material.thick)
+        .background(Material.thin)
       }
     }
   }
@@ -51,18 +51,13 @@ struct ButtonsGroup: View {
         action: { onStartGameClicked() }
       )
         .disabled(!isStartButtonEnabled)
-        .frame(maxWidth: .infinity)
         .buttonStyle(.borderedProminent)
       NavigationLink(destination: HighScoresView()) {
         Text("High Scores")
       }
       .buttonStyle(.bordered)
-//      Button(
-//        "High scores",
-//        action: { onHighScoresClicked() }
-//      )
-//        .frame(maxWidth: .infinity)
     }
+    .frame(maxWidth: .infinity)
   }
 }
 
@@ -83,5 +78,6 @@ struct NonStartedGameView_Previews: PreviewProvider {
         .preferredColorScheme(.dark)
         .previewInterfaceOrientation(.landscapeLeft)
     }
+    .environmentObject(MainScreenStoreWrapper())
   }
 }

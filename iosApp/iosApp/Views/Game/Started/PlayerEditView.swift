@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PlayerEditView: View {
-  @ObservedObject
+  @EnvironmentObject
   var wrapper: MainScreenStoreWrapper
 
   var body: some View {
@@ -43,7 +43,8 @@ struct PlayerEditView: View {
 
 struct PlayerEditView_Previews: PreviewProvider {
   static var previews: some View {
-    PlayerEditView(wrapper: .init())
+    PlayerEditView()
+      .environmentObject(MainScreenStoreWrapper())
       .previewLayout(.sizeThatFits)
   }
 }

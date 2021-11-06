@@ -2,9 +2,10 @@ import SwiftUI
 import shared
 
 struct FinishedGameView: View {
-
-  @ObservedObject
+  @EnvironmentObject
   var wrapper: MainScreenStoreWrapper
+
+  @State var animated = false
 
   let state: GameState.Finished
 
@@ -21,7 +22,12 @@ struct FinishedGameView: View {
         Text("High scores")
       }
       .buttonStyle(.bordered)
-    }
+    }.offset(y: animated ? 0 : 300)
+      .onAppear {
+        withAnimation(.easeOut(duration: 0.35)) {
+          animated = true
+        }
+      }
   }
 
   private func color(for team: Team) -> Color {
@@ -35,5 +41,6 @@ struct FinishedGameView_Previews: PreviewProvider {
       FinishedGameView(wrapper: .init(), state: .init(winnerTeam: RedTeamCompanion(), winner: "Red"))
       FinishedGameView(wrapper: .init(), state: .init(winnerTeam: BlueTeamCompanion(), winner: "Blue"))
     }
+    .environmentObject(MainScreenStoreWrapper())
   }
 }

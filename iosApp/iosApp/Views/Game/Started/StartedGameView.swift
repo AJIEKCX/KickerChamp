@@ -2,8 +2,7 @@ import SwiftUI
 import shared
 
 struct StartedGameView: View {
-
-  @ObservedObject
+  @EnvironmentObject
   var wrapper: MainScreenStoreWrapper
 
   let state: GameState.Started
@@ -11,14 +10,14 @@ struct StartedGameView: View {
   var body: some View {
     VStack {
       VStack {
-        //        PlayerScoreView(
-        //          name: "Blue",
-        //          color: .blue,
-        //          onIncrement: wrapper.store.onIncrementBlue,
-        //          onDecrement: wrapper.store.onDecrementBlue,
-        //          onSet: { wrapper.store.onSetScoreBlue(score: $0) },
-        //          score: state.blueScore
-        //        )
+        PlayerScoreView(
+          name: "Blue",
+          color: .blue,
+          onIncrement: wrapper.store.onIncrementBlue,
+          onDecrement: wrapper.store.onDecrementBlue,
+          onSet: { wrapper.store.onSetScoreBlue(score: $0) },
+          score: state.blueScore
+        )
       }
       VStack {
         PlayerScoreView(
@@ -28,7 +27,6 @@ struct StartedGameView: View {
           onDecrement: wrapper.store.onDecrementRed,
           onSet: { wrapper.store.onSetScoreRed(score: $0) },
           score: state.redScore
-          //          score: Binding(get: { Float(state.redScore) }, set: { wrapper.store.onSetScoreRed(score: Int32($0)) })
         )
       }
     }
@@ -75,7 +73,7 @@ struct PlayerScoreView: View {
         .controlSize(.large)
         LazyVGrid(
           columns: Array(
-            repeating: GridItem(.adaptive(minimum: 40, maximum: 60)),
+            repeating: GridItem(.adaptive(minimum: 30, maximum: 100)),
             count: 6
           ),
           alignment: .center
@@ -98,6 +96,7 @@ struct PlayerScoreView: View {
 struct StartedGameView_Previews: PreviewProvider {
   static var previews: some View {
     StartedGameView(wrapper: .init(), state: .init(blueScore: 6, redScore: 4))
+      .environmentObject(MainScreenStoreWrapper())
       .previewDevice("iPod touch (7th generation)")
       .previewInterfaceOrientation(.portrait)
   }
