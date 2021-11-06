@@ -6,6 +6,7 @@ struct iOSApp: App {
 		WindowGroup {
       ContentView()
         .environmentObject(MainScreenStoreWrapper())
+        .environmentObject(HighScoreStoreWrapper())
 		}
 	}
 }
