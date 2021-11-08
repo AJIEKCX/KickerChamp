@@ -34,8 +34,9 @@ final class MainScreenStoreWrapper: ObservableObject {
 
   private func subscribe() {
     stateWatcher = store.watchState().watch { [weak self] state in
-      print("new main state!\r\(state)")
-      self?.state = state
+      guard let self = self else { return }
+      print("new main state!\r\(state)", state == self.state)
+      self.state = state
     }
   }
 

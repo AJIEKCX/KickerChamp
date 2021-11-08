@@ -15,15 +15,35 @@ struct HighScoresList: View {
   let scores: [OrderedPlayerScores]
 
   var body: some View {
-    List(scores) { score in
+    List {
+      Section {
+      ForEach(scores) { score in
         HStack {
           Text("\(score.position)")
+            .frame(maxWidth: 30, alignment: .leading)
           Text(score.name)
+          Spacer()
           Text("\(score.wins)")
+            .frame(maxWidth: 40, alignment: .trailing)
+            .font(.body.monospacedDigit())
           Text("\(score.goalsDiff)")
+            .frame(maxWidth: 40, alignment: .trailing)
+            .font(.body.monospacedDigit())
         }
+      }
+      } header: {
+        HStack {
+          Text("Pos")
+          .frame(maxWidth: 30, alignment: .leading)
+          Text("Name")
+          Spacer()
+          Text("Wins")
+            .frame(maxWidth: 40, alignment: .trailing)
+          Text("GD")
+            .frame(maxWidth: 40, alignment: .trailing)
+        }
+      }
     }
-    .padding()
   }
 }
 
@@ -59,6 +79,7 @@ struct HighScoresList2: View {
         }
       }
       .padding()
+      .dynamicTypeSize(.xxxLarge)
     }
   }
 
@@ -69,14 +90,14 @@ struct HighScoresView_Previews: PreviewProvider {
     .init(
       position: 1,
       name: "Wow",
-      wins: 5,
-      goalsDiff: 9
+      wins: 3220,
+      goalsDiff: 95
     ),
     .init(
       position: 2,
       name: "Wow",
-      wins: 4,
-      goalsDiff: 9
+      wins: 110,
+      goalsDiff: 90
     ),
     .init(
       position: 3,
@@ -88,7 +109,9 @@ struct HighScoresView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
       HighScoresList(scores: scores)
+        .previewInterfaceOrientation(.landscapeLeft)
       HighScoresList2(scores: scores)
+        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }.previewLayout(.sizeThatFits)
   }
 }
