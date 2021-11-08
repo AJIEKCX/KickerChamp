@@ -1,4 +1,5 @@
 import SwiftUI
+import shared
 
 struct PlayerEditView: View {
   @EnvironmentObject
@@ -13,12 +14,12 @@ struct PlayerEditView: View {
         PlayerView(
           player: wrapper.state.blueForward,
           randomize: { wrapper.randomizeName(for: wrapper.state.blueForward) },
-          name: wrapper.state.blueForward.bindName(to: wrapper.store)
+          name: binding(player: wrapper.state.blueForward)
         )
         PlayerView(
           player: wrapper.state.blueDefender,
           randomize: { wrapper.randomizeName(for: wrapper.state.blueDefender) },
-          name: wrapper.state.blueDefender.bindName(to: wrapper.store)
+          name: binding(player: wrapper.state.blueDefender)
         )
       }.padding()
       VStack {
@@ -28,18 +29,27 @@ struct PlayerEditView: View {
         PlayerView(
           player: wrapper.state.redForward,
           randomize: { wrapper.randomizeName(for: wrapper.state.redForward) },
-          name: wrapper.state.redForward.bindName(to: wrapper.store)
+          name: binding(player: wrapper.state.redForward)
         )
         PlayerView(
           player: wrapper.state.redDefender,
           randomize: { wrapper.randomizeName(for: wrapper.state.redDefender) },
-          name: wrapper.state.redDefender.bindName(to: wrapper.store)
+          name: binding(player: wrapper.state.redDefender)
         )
       }
       .padding()
     }
   }
+
+  private func binding(player: Player) -> Binding<String> {
+    .init(get: {
+      player.name
+    }, set: { name in
+      wrapper.store.onPlayerNameChanged(player: player, name: name)
+    })
+  }
 }
+
 
 struct PlayerEditView_Previews: PreviewProvider {
   static var previews: some View {
@@ -48,3 +58,4 @@ struct PlayerEditView_Previews: PreviewProvider {
       .previewLayout(.sizeThatFits)
   }
 }
+

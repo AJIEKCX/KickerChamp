@@ -2,13 +2,7 @@ import SwiftUI
 import shared
 
 final class HighScoreStoreWrapper: ObservableObject {
-  let store = HighScoreStore(
-    database: Database(
-      databaseDriverFactory: databaseDriverFactory
-    )
-  )
-
-  private var generator = RandomNameGenerator()
+  let store: HighScoreStore = HighScoreStore(database: database)
 
   private var stateWatcher: Closeable?
 
@@ -27,7 +21,7 @@ final class HighScoreStoreWrapper: ObservableObject {
 
   private func subscribe() {
     stateWatcher = store.watchState().watch { [weak self] state in
-      print("new high score state!\r\(state)")
+      print("High Score\r\t\(state)")
       self?.state = state
     }
   }

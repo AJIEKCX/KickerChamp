@@ -1,16 +1,8 @@
 import SwiftUI
 import shared
 
-let databaseDriverFactory = DatabaseDriverFactory()
-
 final class MainScreenStoreWrapper: ObservableObject {
-  let store = MainScreenStore(
-    database: Database(
-      databaseDriverFactory: databaseDriverFactory
-    )
-  )
-
-  private var generator = RandomNameGenerator()
+  let store = MainScreenStore(database: database)
 
   private var stateWatcher: Closeable?
 
@@ -24,6 +16,8 @@ final class MainScreenStoreWrapper: ObservableObject {
     dialogSate: nil
   )
 
+  private var generator = RandomNameGenerator()
+
   init() {
     subscribe()
   }
@@ -35,13 +29,15 @@ final class MainScreenStoreWrapper: ObservableObject {
   private func subscribe() {
     stateWatcher = store.watchState().watch { [weak self] state in
       guard let self = self else { return }
-      print("new main state!\r\(state)", state == self.state)
+      print("Main\r\t\(state)")
       self.state = state
     }
   }
 
   func randomizeName(for player: Player) {
-    store.onPlayerNameChanged(player: player, name: generator.generate())
+    let generatedName = generator.generate()
+    print("Generated name\r\t\(generatedName)")
+    store.onPlayerNameChanged(player: player, name: generatedName)
   }
 }
 

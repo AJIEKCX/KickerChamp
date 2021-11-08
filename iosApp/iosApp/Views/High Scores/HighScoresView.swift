@@ -63,8 +63,8 @@ struct HighScoresList2: View {
       ) {
         Text("#")
         Text("Игрок")
-        Text("Побед")
-        Text("Разница")
+        Text("W")
+        Text("GD")
         ForEach(scores) { score in
           Group {
             Text("\(score.position)")

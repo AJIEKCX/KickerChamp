@@ -12,10 +12,10 @@ struct ContentView: View {
           .navigationBarTitle("KickerChamp", displayMode: .inline)
       } else if let started = wrapper.state.gameState as? GameState.Started {
         StartedGameView(state: started)
-          .navigationTitle("Game ongoing")
+          .navigationBarTitle("Game ongoing", displayMode: .inline)
       } else if let finished = wrapper.state.gameState as? GameState.Finished {
         FinishedGameView(state: finished)
-          .navigationTitle("Finished game!")
+          .navigationBarTitle("Finished game", displayMode: .inline)
       }
     }
     .navigationViewStyle(.stack)

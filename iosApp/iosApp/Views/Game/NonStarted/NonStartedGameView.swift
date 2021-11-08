@@ -14,45 +14,24 @@ struct NonStartedGameView: View {
         PlayerEditView()
       }
       HStack {
-        ButtonsGroup(
-          onStartGameClicked: wrapper.store.onStartGameClicked,
-          isStartButtonEnabled: wrapper.state.isStartButtonEnabled,
-          onHighScoresClicked: {}
+        Button(
+          "Start game",
+          action: { wrapper.store.onStartGameClicked() }
         )
+          .disabled(!wrapper.state.isStartButtonEnabled)
+          .buttonStyle(.borderedProminent)
+          .frame(maxWidth: .infinity)
+        NavigationLink(destination: HighScoresView()) {
+          Text("High Scores")
+        }
+        .buttonStyle(.bordered)
+        .frame(maxWidth: .infinity)
       }
+      .frame(maxWidth: .infinity)
       .padding(.top)
       .background(Material.thin)
+      .controlSize(.large)
     }
-  }
-}
-
-struct ButtonsGroup: View {
-  let onStartGameClicked: () -> Void
-  let isStartButtonEnabled: Bool
-  let onHighScoresClicked: () -> Void
-  var body: some View {
-    Group {
-      Button(
-        "Start game",
-        action: { onStartGameClicked() }
-      )
-        .disabled(!isStartButtonEnabled)
-        .buttonStyle(.borderedProminent)
-      NavigationLink(destination: HighScoresView()) {
-        Text("High Scores")
-      }
-      .buttonStyle(.bordered)
-    }
-    .frame(maxWidth: .infinity)
-  }
-}
-
-extension Player {
-  func bindName(to store: MainScreenStore) -> Binding<String> {
-    Binding(
-      get: { self.name },
-      set: { [unowned self] in store.onPlayerNameChanged(player: self, name: $0) }
-    )
   }
 }
 
