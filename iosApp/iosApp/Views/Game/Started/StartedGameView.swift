@@ -73,7 +73,7 @@ struct PlayerScoreView: View {
         .controlSize(.large)
         LazyVGrid(
           columns: Array(
-            repeating: GridItem(.adaptive(minimum: 30, maximum: 100)),
+            repeating: GridItem(.adaptive(minimum: 30)),
             count: 6
           ),
           alignment: .center
@@ -95,9 +95,12 @@ struct PlayerScoreView: View {
 
 struct StartedGameView_Previews: PreviewProvider {
   static var previews: some View {
-    StartedGameView(wrapper: .init(), state: .init(blueScore: 6, redScore: 4))
+    Group {
+      StartedGameView(state: .init(blueScore: 6, redScore: 4))
+        .previewDevice("iPod touch (7th generation)")
+      StartedGameView(state: .init(blueScore: 6, redScore: 4))
+
+    }
       .environmentObject(MainScreenStoreWrapper())
-      .previewDevice("iPod touch (7th generation)")
-      .previewInterfaceOrientation(.portrait)
   }
 }

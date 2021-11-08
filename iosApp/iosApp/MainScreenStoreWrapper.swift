@@ -1,10 +1,12 @@
 import SwiftUI
 import shared
 
-class MainScreenStoreWrapper: ObservableObject {
+let databaseDriverFactory = DatabaseDriverFactory()
+
+final class MainScreenStoreWrapper: ObservableObject {
   let store = MainScreenStore(
     database: Database(
-      databaseDriverFactory: DatabaseDriverFactory()
+      databaseDriverFactory: databaseDriverFactory
     )
   )
 
@@ -32,11 +34,21 @@ class MainScreenStoreWrapper: ObservableObject {
 
   private func subscribe() {
     stateWatcher = store.watchState().watch { [weak self] state in
+      print("new main state!\r\(state)")
       self?.state = state
     }
   }
 
   func randomizeName(for player: Player) {
     store.onPlayerNameChanged(player: player, name: generator.generate())
+  }
+}
+
+extension MainScreenState {
+  var isStartButtonEnabled: Bool {
+    if let nonStarted = gameState as? GameState.NonStarted {
+      return nonStarted.isStartButtonEnabled
+    }
+    return false
   }
 }

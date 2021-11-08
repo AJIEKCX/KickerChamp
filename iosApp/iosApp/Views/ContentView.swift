@@ -7,10 +7,8 @@ struct ContentView: View {
 
   var body: some View {
     NavigationView {
-      if let nonStarted = wrapper.state.gameState as? GameState.NonStarted {
-        NonStartedGameView(
-          isStartButtonEnabled: nonStarted.isStartButtonEnabled
-        )
+      if wrapper.state.gameState is GameState.NonStarted {
+        NonStartedGameView()
           .navigationBarTitle("KickerChamp", displayMode: .inline)
       } else if let started = wrapper.state.gameState as? GameState.Started {
         StartedGameView(state: started)
@@ -26,7 +24,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView(wrapper: .init())
+    ContentView()
       .environmentObject(MainScreenStoreWrapper())
   }
 }

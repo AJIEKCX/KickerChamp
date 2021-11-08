@@ -1,10 +1,10 @@
 import SwiftUI
 import shared
 
-class HighScoreStoreWrapper: ObservableObject {
+final class HighScoreStoreWrapper: ObservableObject {
   let store = HighScoreStore(
     database: Database(
-      databaseDriverFactory: DatabaseDriverFactory()
+      databaseDriverFactory: databaseDriverFactory
     )
   )
 
@@ -27,6 +27,7 @@ class HighScoreStoreWrapper: ObservableObject {
 
   private func subscribe() {
     stateWatcher = store.watchState().watch { [weak self] state in
+      print("new high score state!\r\(state)")
       self?.state = state
     }
   }

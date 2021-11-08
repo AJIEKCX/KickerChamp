@@ -38,8 +38,8 @@ struct FinishedGameView: View {
 struct FinishedGameView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      FinishedGameView(wrapper: .init(), state: .init(winnerTeam: RedTeamCompanion(), winner: "Red"))
-      FinishedGameView(wrapper: .init(), state: .init(winnerTeam: BlueTeamCompanion(), winner: "Blue"))
+      FinishedGameView(state: .init(winnerTeam: RedTeamCompanion(), winner: "Red"))
+      FinishedGameView(state: .init(winnerTeam: BlueTeamCompanion(), winner: "Blue"))
     }
     .environmentObject(MainScreenStoreWrapper())
   }
