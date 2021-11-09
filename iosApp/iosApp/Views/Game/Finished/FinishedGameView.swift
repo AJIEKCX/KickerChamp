@@ -7,7 +7,7 @@ struct FinishedGameView: View {
 
   @State var animated = false
 
-  let state: GameState.Finished
+  let state: MainGameState.Finished
 
   var body: some View {
     VStack {
@@ -30,16 +30,19 @@ struct FinishedGameView: View {
       }
   }
 
-  private func color(for team: Team) -> Color {
-    team is BlueTeam ? Color.blue : Color.red
+  private func color(for team: MainTeam) -> Color {
+    switch team {
+    case .blue: return Color.blue
+    case .red: return Color.red
+    }
   }
 }
 
 struct FinishedGameView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      FinishedGameView(state: .init(winnerTeam: RedTeamCompanion(), winner: "Red"))
-      FinishedGameView(state: .init(winnerTeam: BlueTeamCompanion(), winner: "Blue"))
+      FinishedGameView(state: .init(winnerTeam: .red, winner: "Red"))
+      FinishedGameView(state: .init(winnerTeam: .blue, winner: "Blue"))
     }
     .environmentObject(MainScreenStoreWrapper())
   }

@@ -5,7 +5,7 @@ struct StartedGameView: View {
   @EnvironmentObject
   var wrapper: MainScreenStoreWrapper
 
-  let state: GameState.Started
+  let state: MainGameState.Started
 
   var body: some View {
     VStack {

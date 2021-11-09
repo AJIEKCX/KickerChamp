@@ -55,7 +55,7 @@ class MainScreenStore(
     }
 
     fun onSetScoreBlue(score: Int) {
-        if (score <= 0 || score > WIN_SCORE) return
+        if (score < 0 || score > WIN_SCORE) return
         val gameState = state.value.gameState
         if (gameState is GameState.Started) {
             val newGameState = gameState.copy(blueScore = score)
