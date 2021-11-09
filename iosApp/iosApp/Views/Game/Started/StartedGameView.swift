@@ -9,6 +9,7 @@ struct StartedGameView: View {
 
   var body: some View {
     VStack {
+      Spacer()
       VStack {
         PlayerScoreView(
           name: "Blue",
@@ -19,6 +20,7 @@ struct StartedGameView: View {
           score: state.blueScore
         )
       }
+      Spacer(minLength: 16)
       VStack {
         PlayerScoreView(
           name: "Red",
@@ -29,6 +31,7 @@ struct StartedGameView: View {
           score: state.redScore
         )
       }
+      Spacer()
     }
   }
 }
@@ -62,20 +65,19 @@ struct PlayerScoreView: View {
           Button("-", action: {
             onDecrement()
           })
+            .buttonBorderShape(.capsule)
             .buttonStyle(.bordered)
             .disabled(score < 1)
           Button("+", action: {
             onIncrement()
           })
+            .buttonBorderShape(.capsule)
             .buttonStyle(.bordered)
             .disabled(score > 9)
         }
         .controlSize(.large)
         LazyVGrid(
-          columns: Array(
-            repeating: GridItem(.adaptive(minimum: 30)),
-            count: 6
-          ),
+          columns: [GridItem(.adaptive(minimum: 44))],
           alignment: .center
         ) {
           ForEach(0..<(winScore+1)) { number in
@@ -96,7 +98,7 @@ struct PlayerScoreView: View {
 struct StartedGameView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      StartedGameView(state: .init(blueScore: 6, redScore: 4))
+      StartedGameView(state: .init(blueScore: 0, redScore: 4))
         .previewDevice("iPod touch (7th generation)")
       StartedGameView(state: .init(blueScore: 6, redScore: 4))
 
