@@ -1,34 +1,34 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("org.jetbrains.compose")
 }
 
 android {
     compileSdk = 31
+
     defaultConfig {
-        applicationId = "ru.kontur.kickerchamp.android"
         minSdk = 23
         targetSdk = 31
         versionCode = 1
         versionName = "1.0"
     }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
         }
     }
 
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.2"
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
     implementation(project(":shared"))
+    implementation(project(":shared-ui"))
     // AndroidX
     implementation(libs.androidCoreKtx)
     implementation(libs.androidActivityKtx)
@@ -37,11 +37,12 @@ dependencies {
     implementation(libs.androidMaterial)
 
     // Jetpack Compose
-    implementation(libs.composeUi)
-    implementation(libs.composeMaterial)
+
+    implementation(compose.material)
+    implementation(compose.foundation)
+    implementation(compose.ui)
     implementation(libs.composeToolingPreview)
     implementation(libs.composeActivity)
-    implementation(libs.composeFoundation)
     implementation(libs.composeNavigation)
     implementation(libs.composeInsets)
     debugImplementation(libs.composeTooling)
