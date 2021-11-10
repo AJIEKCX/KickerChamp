@@ -5,9 +5,6 @@ struct NonStartedGameView: View {
   @EnvironmentObject
   var wrapper: MainScreenStoreWrapper
 
-  @Environment(\.verticalSizeClass)
-  var verticalSizeClass
-
   var body: some View {
     VStack {
       ScrollView {
