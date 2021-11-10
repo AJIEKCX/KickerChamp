@@ -3,12 +3,11 @@ import shared
 
 struct ContentView: View {
 
-  @EnvironmentObject
-  var wrapper: MainScreenStoreWrapper
+  let gameState: MainGameState
 
   var body: some View {
     NavigationView {
-      switch wrapper.gameState {
+      switch gameState {
       case .nonStarted:
         NonStartedGameView()
           .navigationBarTitle("KickerChamp", displayMode: .inline)
@@ -26,7 +25,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
-      .environmentObject(MainScreenStoreWrapper())
+    ContentView(gameState: .finished(.init(winnerTeam: .blue, winner: "Blue")))
   }
 }

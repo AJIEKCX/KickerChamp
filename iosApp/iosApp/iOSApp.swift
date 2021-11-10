@@ -7,7 +7,7 @@ struct iOSApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-      ContentView()
+      ContentView(gameState: mainScreenStoreWrapper.gameState)
         .environmentObject(mainScreenStoreWrapper)
         .environmentObject(highScoreStoreWrapper)
 		}
