@@ -1,53 +1,16 @@
 import SwiftUI
+import shared
 
 struct HighScoresView: View {
   @EnvironmentObject
   var wrapper: HighScoreStoreWrapper
 
   var body: some View {
-    HighScoresList2(scores: wrapper.state.playerScores)
+    HighScoresList(scores: wrapper.state.playerScores)
   }
 }
-
-import shared
 
 struct HighScoresList: View {
-  let scores: [OrderedPlayerScores]
-
-  var body: some View {
-    List {
-      Section {
-      ForEach(scores) { score in
-        HStack {
-          Text("\(score.position)")
-            .frame(maxWidth: 30, alignment: .leading)
-          Text(score.name)
-          Spacer()
-          Text("\(score.wins)")
-            .frame(maxWidth: 40, alignment: .trailing)
-            .font(.body.monospacedDigit())
-          Text("\(score.goalsDiff)")
-            .frame(maxWidth: 40, alignment: .trailing)
-            .font(.body.monospacedDigit())
-        }
-      }
-      } header: {
-        HStack {
-          Text("Pos")
-          .frame(maxWidth: 30, alignment: .leading)
-          Text("Name")
-          Spacer()
-          Text("Wins")
-            .frame(maxWidth: 40, alignment: .trailing)
-          Text("GD")
-            .frame(maxWidth: 40, alignment: .trailing)
-        }
-      }
-    }
-  }
-}
-
-struct HighScoresList2: View {
   let scores: [OrderedPlayerScores]
 
   var body: some View {
@@ -110,7 +73,7 @@ struct HighScoresView_Previews: PreviewProvider {
     Group {
       HighScoresList(scores: scores)
         .previewInterfaceOrientation(.landscapeLeft)
-      HighScoresList2(scores: scores)
+      HighScoresList(scores: scores)
         .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }.previewLayout(.sizeThatFits)
   }
