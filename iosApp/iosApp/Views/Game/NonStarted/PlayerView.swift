@@ -1,7 +1,7 @@
 import SwiftUI
 import shared
 
-struct PlayerView: View {
+struct PlayerEditView: View {
   let player: Player
   let randomize: () -> Void
   @Binding var name: String
@@ -11,6 +11,7 @@ struct PlayerView: View {
       HStack {
         Text(title(for: player))
           .foregroundColor(color(for: player))
+        #if DEBUG
         Spacer()
         Button(
           "🎲",
@@ -18,6 +19,7 @@ struct PlayerView: View {
         )
           .buttonStyle(.bordered)
           .controlSize(.mini)
+        #endif
       }
       TextField("Name", text: $name, prompt: Text("Name"))
         .textFieldStyle(.roundedBorder)
@@ -26,14 +28,14 @@ struct PlayerView: View {
 
   private func title(for: Player) -> String {
     switch player {
-    case is BlueForward:
-      return "⚔️🔵 Blue Forward"
     case is BlueDefender:
       return "🥅🔵 Blue Defender"
-    case is RedForward:
-      return "⚔️🔴 Red Forward"
+    case is BlueForward:
+      return "⚔️🔵 Blue Forward"
     case is RedDefender:
       return "🥅🔴 Red Defender"
+    case is RedForward:
+      return "⚔️🔴 Red Forward"
     default:
       return "Unknown"
     }
@@ -51,16 +53,16 @@ struct PlayerView: View {
   }
 }
 
-struct PlayerView_Previews: PreviewProvider {
+struct PlayerEditView_Previews: PreviewProvider {
   @State static var name: String = ""
   static var previews: some View {
     Group {
-      PlayerView(
+      PlayerEditView(
         player: BlueForward(name: "Johnny"),
         randomize: {},
         name: $name
       )
-      PlayerView(
+      PlayerEditView(
         player: RedDefender(name: "Jacky"),
         randomize: {},
         name: $name

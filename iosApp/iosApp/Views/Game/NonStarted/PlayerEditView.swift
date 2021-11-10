@@ -11,30 +11,30 @@ struct PlayerEditView: View {
         Text("Blue Team")
           .font(.title)
           .padding(.bottom)
-        PlayerView(
-          player: wrapper.state.blueForward,
-          randomize: { wrapper.randomizeName(for: wrapper.state.blueForward) },
-          name: binding(player: wrapper.state.blueForward)
-        )
-        PlayerView(
+        PlayerEditView(
           player: wrapper.state.blueDefender,
           randomize: { wrapper.randomizeName(for: wrapper.state.blueDefender) },
           name: binding(player: wrapper.state.blueDefender)
+        )
+        PlayerEditView(
+          player: wrapper.state.blueForward,
+          randomize: { wrapper.randomizeName(for: wrapper.state.blueForward) },
+          name: binding(player: wrapper.state.blueForward)
         )
       }.padding()
       VStack {
         Text("Red Team")
           .font(.title)
           .padding(.bottom)
-        PlayerView(
-          player: wrapper.state.redForward,
-          randomize: { wrapper.randomizeName(for: wrapper.state.redForward) },
-          name: binding(player: wrapper.state.redForward)
-        )
-        PlayerView(
+        PlayerEditView(
           player: wrapper.state.redDefender,
           randomize: { wrapper.randomizeName(for: wrapper.state.redDefender) },
           name: binding(player: wrapper.state.redDefender)
+        )
+        PlayerEditView(
+          player: wrapper.state.redForward,
+          randomize: { wrapper.randomizeName(for: wrapper.state.redForward) },
+          name: binding(player: wrapper.state.redForward)
         )
       }
       .padding()
