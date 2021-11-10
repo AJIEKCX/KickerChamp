@@ -28,7 +28,7 @@ struct NonStartedGameView: View {
         .frame(maxWidth: .infinity)
       }
       .frame(maxWidth: .infinity)
-      .padding(.top)
+      .padding(.vertical)
       .background(Material.thin)
       .controlSize(.large)
     }
