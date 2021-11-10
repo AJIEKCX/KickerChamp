@@ -18,6 +18,7 @@
 		8D615BB22733D37800FD24C6 /* RandomNameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D615BB12733D37800FD24C6 /* RandomNameGenerator.swift */; };
 		8D615BB52733E48B00FD24C6 /* FinishedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D615BB42733E48B00FD24C6 /* FinishedGameView.swift */; };
 		8D63BBBC2734F8E100DDED70 /* HighScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63BBBB2734F8E100DDED70 /* HighScoresView.swift */; };
+		8D926E3F273BE8720041A689 /* MainScreenState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D926E3E273BE8720041A689 /* MainScreenState+Extensions.swift */; };
 		8DD97F3F27397BB3007F5F34 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD97F3E27397BB3007F5F34 /* Database.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		8D615BB12733D37800FD24C6 /* RandomNameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNameGenerator.swift; sourceTree = "<group>"; };
 		8D615BB42733E48B00FD24C6 /* FinishedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedGameView.swift; sourceTree = "<group>"; };
 		8D63BBBB2734F8E100DDED70 /* HighScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresView.swift; sourceTree = "<group>"; };
+		8D926E3E273BE8720041A689 /* MainScreenState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainScreenState+Extensions.swift"; sourceTree = "<group>"; };
 		8DD97F3E27397BB3007F5F34 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 				8DD97F3E27397BB3007F5F34 /* Database.swift */,
 				8D29D177272FB4E90049C018 /* MainScreenStoreWrapper.swift */,
 				8D26021D2736743500F4F7B5 /* HighScoreStoreWrapper.swift */,
+				8D926E3E273BE8720041A689 /* MainScreenState+Extensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				8D615BAB2733A3D900FD24C6 /* PlayersEditView.swift in Sources */,
 				8D615BB22733D37800FD24C6 /* RandomNameGenerator.swift in Sources */,
+				8D926E3F273BE8720041A689 /* MainScreenState+Extensions.swift in Sources */,
 				8D29D178272FB4E90049C018 /* MainScreenStoreWrapper.swift in Sources */,
 				8D615BA92733149800FD24C6 /* NonStartedGameView.swift in Sources */,
 				8D63BBBC2734F8E100DDED70 /* HighScoresView.swift in Sources */,
