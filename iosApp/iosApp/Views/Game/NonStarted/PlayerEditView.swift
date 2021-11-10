@@ -2,60 +2,72 @@ import SwiftUI
 import shared
 
 struct PlayerEditView: View {
-  @EnvironmentObject
-  var wrapper: MainScreenStoreWrapper
+  let player: Player
+  let randomize: () -> Void
+  @Binding var name: String
 
   var body: some View {
-    Group {
-      VStack {
-        Text("Blue Team")
-          .font(.title)
-          .padding(.bottom)
-        PlayerEditView(
-          player: wrapper.state.blueDefender,
-          randomize: { wrapper.randomizeName(for: wrapper.state.blueDefender) },
-          name: binding(player: wrapper.state.blueDefender)
+    VStack(alignment: .leading) {
+      HStack {
+        Text(title(for: player))
+          .foregroundColor(color(for: player))
+        #if DEBUG
+        Spacer()
+        Button(
+          "🎲",
+          action: randomize
         )
-        PlayerEditView(
-          player: wrapper.state.blueForward,
-          randomize: { wrapper.randomizeName(for: wrapper.state.blueForward) },
-          name: binding(player: wrapper.state.blueForward)
-        )
-      }.padding()
-      VStack {
-        Text("Red Team")
-          .font(.title)
-          .padding(.bottom)
-        PlayerEditView(
-          player: wrapper.state.redDefender,
-          randomize: { wrapper.randomizeName(for: wrapper.state.redDefender) },
-          name: binding(player: wrapper.state.redDefender)
-        )
-        PlayerEditView(
-          player: wrapper.state.redForward,
-          randomize: { wrapper.randomizeName(for: wrapper.state.redForward) },
-          name: binding(player: wrapper.state.redForward)
-        )
+          .buttonStyle(.bordered)
+          .controlSize(.mini)
+        #endif
       }
-      .padding()
+      TextField("Name", text: $name, prompt: Text("Name"))
+        .textFieldStyle(.roundedBorder)
     }
   }
 
-  private func binding(player: Player) -> Binding<String> {
-    .init(get: {
-      player.name
-    }, set: { name in
-      wrapper.store.onPlayerNameChanged(player: player, name: name)
-    })
+  private func title(for: Player) -> String {
+    switch player {
+    case is BlueDefender:
+      return "🥅🔵 Blue Defender"
+    case is BlueForward:
+      return "⚔️🔵 Blue Forward"
+    case is RedDefender:
+      return "🥅🔴 Red Defender"
+    case is RedForward:
+      return "⚔️🔴 Red Forward"
+    default:
+      return "Unknown"
+    }
+  }
+
+  private func color(for: Player) -> Color {
+    switch player {
+    case is BlueTeam:
+      return .blue
+    case is RedTeam:
+      return .red
+    default:
+      return .primary
+    }
   }
 }
-
 
 struct PlayerEditView_Previews: PreviewProvider {
+  @State static var name: String = ""
   static var previews: some View {
-    PlayerEditView()
-      .environmentObject(MainScreenStoreWrapper())
-      .previewLayout(.sizeThatFits)
+    Group {
+      PlayerEditView(
+        player: BlueForward(name: "Johnny"),
+        randomize: {},
+        name: $name
+      )
+      PlayerEditView(
+        player: RedDefender(name: "Jacky"),
+        randomize: {},
+        name: $name
+      )
+    }
+    .previewLayout(.sizeThatFits)
   }
 }
-

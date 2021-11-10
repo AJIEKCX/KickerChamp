@@ -11,7 +11,7 @@ struct NonStartedGameView: View {
   var body: some View {
     VStack {
       ScrollView {
-        PlayerEditView()
+        PlayersEditView()
       }
       HStack {
         Button(
