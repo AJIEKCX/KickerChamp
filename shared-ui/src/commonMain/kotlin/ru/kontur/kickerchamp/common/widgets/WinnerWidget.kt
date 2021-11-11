@@ -13,17 +13,23 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import ru.kontur.kickerchamp.BlueTeam
+import ru.kontur.kickerchamp.RedTeam
+import ru.kontur.kickerchamp.Team
 
 @Composable
 fun WinnerWidget(
-    winner: String,
-    color: Color,
+    winnerTeam: Team,
     onRestartGameClicked: () -> Unit,
     onRevengeClicked: () -> Unit,
     onHighScoresClicked: () -> Unit
 ) {
+    val (color, winner) = when (winnerTeam) {
+        is BlueTeam -> MaterialTheme.colors.primary to "Blue wins"
+        is RedTeam -> MaterialTheme.colors.secondary to "Red wins"
+    }
+
     Box(Modifier.fillMaxSize()) {
         Column(
             Modifier.align(Alignment.Center),

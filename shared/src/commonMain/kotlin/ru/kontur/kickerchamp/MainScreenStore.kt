@@ -17,21 +17,11 @@ class MainScreenStore(
     val state = _state.asStateFlow()
 
     fun onIncrementRed() {
-        val gameState = state.value.gameState
-        if (gameState is GameState.Started) {
-            val newGameState = gameState.copy(redScore = gameState.redScore + 1)
-            _state.value = state.value.copy(gameState = newGameState)
-            checkGameEnded(newGameState)
-        }
+        onIncrementScore(RedTeam)
     }
 
     fun onIncrementBlue() {
-        val gameState = state.value.gameState
-        if (gameState is GameState.Started) {
-            val newGameState = gameState.copy(blueScore = gameState.blueScore + 1)
-            _state.value = state.value.copy(gameState = newGameState)
-            checkGameEnded(newGameState)
-        }
+        onIncrementScore(BlueTeam)
     }
 
     fun onRevengeClicked() {
@@ -66,6 +56,8 @@ class MainScreenStore(
     }
 
     fun onAddPlayerClicked(player: Player) {
+        if (state.value.gameState !is GameState.NonStarted) return
+
         _state.value = state.value.copy(dialogSate = DialogState(player))
     }
 
@@ -73,26 +65,36 @@ class MainScreenStore(
         _state.value = state.value.copy(dialogSate = null)
     }
 
+    private fun onIncrementScore(team: Team) {
+        val gameState = state.value.gameState
+        if (gameState is GameState.Started) {
+            val newGameState = when (team) {
+                is BlueTeam -> gameState.copy(blueScore = gameState.blueScore + 1)
+                is RedTeam -> gameState.copy(redScore = gameState.redScore + 1)
+            }
+            _state.value = state.value.copy(gameState = newGameState)
+            checkGameEnded(newGameState)
+        }
+    }
+
     private fun checkGameEnded(gameState: GameState.Started) {
-        if (gameState.blueScore == WIN_SCORE) {
-            saveScores(listOf(state.value.blueDefender, state.value.blueForward), WIN_SCORE - gameState.redScore)
-            _state.value = state.value.copy(
-                gameState = GameState.Finished(
-                    winnerTeam = BlueTeam,
-                    winner = "Blue wins"
-                )
-            )
+        val winnerTeam = when {
+            gameState.blueScore == WIN_SCORE -> BlueTeam
+            gameState.redScore == WIN_SCORE -> RedTeam
+            else -> return
         }
 
-        if (gameState.redScore == WIN_SCORE) {
-            saveScores(listOf(state.value.redDefender, state.value.redForward), WIN_SCORE - gameState.blueScore)
-            _state.value = state.value.copy(
-                gameState = GameState.Finished(
-                    winnerTeam = RedTeam,
-                    winner = "Red wins"
-                )
-            )
+        val (winnerPlayers, goalsDiff) = when (winnerTeam) {
+            is BlueTeam -> listOf(state.value.blueDefender, state.value.blueForward) to WIN_SCORE - gameState.redScore
+            is RedTeam -> listOf(state.value.redDefender, state.value.redForward) to WIN_SCORE - gameState.blueScore
         }
+
+        saveScores(winnerPlayers, goalsDiff)
+        _state.value = state.value.copy(
+            gameState = GameState.Finished(
+                winnerTeam = winnerTeam
+            )
+        )
     }
 
     private fun saveScores(

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -15,13 +16,19 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.delay
 import ru.kontur.kickerchamp.common.Dialog
 import ru.kontur.kickerchamp.DialogState
 import ru.kontur.kickerchamp.Player
@@ -32,7 +39,7 @@ fun PlayerNameDialog(
     onDone: (Player, String) -> Unit,
     onDismiss: () -> Unit
 ) {
-    var name by remember { mutableStateOf(state.player.name) }
+    var name by rememberSaveable { mutableStateOf(state.player.name) }
 
     Dialog(onCloseRequest = onDismiss) {
         PlayerNameDialogContent(
@@ -49,6 +56,13 @@ private fun PlayerNameDialogContent(
     onNameChange: (String) -> Unit,
     onDone: () -> Unit
 ) {
+    val focusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(Unit) {
+        delay(100)
+        focusRequester.requestFocus()
+    }
+
     Card(Modifier.size(200.dp)) {
         Column(Modifier.padding(16.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -64,7 +78,9 @@ private fun PlayerNameDialogContent(
                 singleLine = true,
                 keyboardActions = KeyboardActions {
                     onDone()
-                }
+                },
+                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
+                modifier = Modifier.focusRequester(focusRequester)
             )
             Spacer(Modifier.weight(1f))
         }
