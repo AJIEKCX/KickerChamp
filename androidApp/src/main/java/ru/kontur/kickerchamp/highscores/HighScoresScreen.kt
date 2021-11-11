@@ -1,4 +1,4 @@
-package ru.kontur.kickerchamp.common.highscores
+package ru.kontur.kickerchamp.highscores
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer

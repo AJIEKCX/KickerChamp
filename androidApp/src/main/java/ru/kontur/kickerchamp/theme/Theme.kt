@@ -1,4 +1,4 @@
-package ru.kontur.kickerchamp.common.theme
+package ru.kontur.kickerchamp.theme
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors

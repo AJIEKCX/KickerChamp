@@ -1,5 +1,6 @@
-package ru.kontur.kickerchamp.common.widgets
+package ru.kontur.kickerchamp.widgets
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,7 +21,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import ru.kontur.kickerchamp.BlueDefender
@@ -33,13 +34,12 @@ import ru.kontur.kickerchamp.RedDefender
 import ru.kontur.kickerchamp.RedForward
 import ru.kontur.kickerchamp.RedTeam
 import ru.kontur.kickerchamp.Team
-import ru.kontur.kickerchamp.common.DefenderIcon
-import ru.kontur.kickerchamp.common.ForwardIcon
+import ru.kontur.kickerchamp.common.R
 
 @Composable
 fun PlayerCard(
     player: Player,
-    onAddOrReplacePlayer: (Player) -> Unit,
+    onAddOrEditPlayer: (Player) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val shape = when (player) {
@@ -47,11 +47,6 @@ fun PlayerCard(
         is BlueForward -> RoundedCornerShape(bottomEnd = 100.dp)
         is RedDefender -> RoundedCornerShape(topStart = 100.dp)
         is RedForward -> RoundedCornerShape(bottomStart = 100.dp)
-    }
-
-    val playerButtonColor = when (player as Team) {
-        is BlueTeam -> MaterialTheme.colors.primary
-        is RedTeam -> MaterialTheme.colors.secondary
     }
 
     Card(
@@ -65,33 +60,37 @@ fun PlayerCard(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if (player is Forward) {
-                PlayerRoleTitle(title = "Forward", icon = { ForwardIcon() })
+                PlayerRoleTitle(title = "Forward", iconRes = R.drawable.ic_forward)
             }
             Spacer(Modifier.weight(1f))
-            AddOrReplacePlayerButton(player, playerButtonColor, onAddOrReplacePlayer)
+            AddOrEditPlayerButton(player, onAddOrEditPlayer)
             Spacer(Modifier.weight(1f))
             if (player is Defender) {
-                PlayerRoleTitle(title = "Defender", icon = { DefenderIcon() })
+                PlayerRoleTitle(title = "Defender", iconRes = R.drawable.ic_defender)
             }
         }
     }
 }
 
 @Composable
-private fun PlayerRoleTitle(title: String, icon: @Composable () -> Unit) {
+private fun PlayerRoleTitle(title: String, @DrawableRes iconRes: Int) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Text(title, style = MaterialTheme.typography.h6)
         Spacer(Modifier.width(8.dp))
-        icon()
+        Icon(painterResource(iconRes), contentDescription = null)
     }
 }
 
 @Composable
-private fun AddOrReplacePlayerButton(
+private fun AddOrEditPlayerButton(
     player: Player,
-    color: Color,
     onClick: (Player) -> Unit
 ) {
+    val color = when (player as Team) {
+        is BlueTeam -> MaterialTheme.colors.primary
+        is RedTeam -> MaterialTheme.colors.secondary
+    }
+
     if (player.name.isNotEmpty()) {
         Text(
             player.name,

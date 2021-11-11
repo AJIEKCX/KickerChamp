@@ -1,15 +1,15 @@
-package ru.kontur.kickerchamp.common.main
+package ru.kontur.kickerchamp.main
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import ru.kontur.kickerchamp.GameState
 import ru.kontur.kickerchamp.MainScreenStore
-import ru.kontur.kickerchamp.common.widgets.PlayerNameDialog
-import ru.kontur.kickerchamp.common.widgets.PlayersWidget
-import ru.kontur.kickerchamp.common.widgets.ScoreWidget
-import ru.kontur.kickerchamp.common.widgets.StartGameWidget
-import ru.kontur.kickerchamp.common.widgets.WinnerWidget
+import ru.kontur.kickerchamp.widgets.PlayerNameDialog
+import ru.kontur.kickerchamp.widgets.PlayersWidget
+import ru.kontur.kickerchamp.widgets.ScoreWidget
+import ru.kontur.kickerchamp.widgets.StartGameWidget
+import ru.kontur.kickerchamp.widgets.WinnerWidget
 
 @Composable
 fun MainScreen(store: MainScreenStore, onHighScoresClick: () -> Unit) {
@@ -25,7 +25,7 @@ fun MainScreen(store: MainScreenStore, onHighScoresClick: () -> Unit) {
 
     PlayersWidget(
         players = state.players,
-        onAddOrReplacePlayer = store::onAddPlayerClicked
+        onAddOrEditPlayer = store::onAddPlayerClicked
     )
 
     when (val gameState = state.gameState) {

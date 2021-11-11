@@ -1,4 +1,4 @@
-package ru.kontur.kickerchamp.common.widgets
+package ru.kontur.kickerchamp.widgets
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -11,14 +11,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import ru.kontur.kickerchamp.common.IncrementIcon
+import ru.kontur.kickerchamp.common.R
 
 @Composable
 fun ScoreWidget(
@@ -88,4 +90,14 @@ private fun ScoreCard(
             )
         }
     }
+}
+
+@Composable
+private fun IncrementIcon(modifier: Modifier) {
+    Icon(
+        painterResource(R.drawable.ic_increment),
+        contentDescription = null,
+        tint = MaterialTheme.colors.onBackground,
+        modifier = modifier
+    )
 }

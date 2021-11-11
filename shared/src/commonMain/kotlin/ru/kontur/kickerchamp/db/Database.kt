@@ -9,7 +9,7 @@ import ru.kontur.kickerchamp.PlayerScore
 
 class Database(databaseDriverFactory: DatabaseDriverFactory) {
     private val database = AppDatabase(databaseDriverFactory.createDriver())
-    private val dbQuery = database.appDatabaseQueries
+    private val dbQuery = database.playerScoreQueries
 
     fun observePlayerScores(): Flow<List<PlayerScore>> {
         return dbQuery.selectAllByRating().asFlow().mapToList()

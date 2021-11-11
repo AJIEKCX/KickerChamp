@@ -1,4 +1,4 @@
-package ru.kontur.kickerchamp.common.widgets
+package ru.kontur.kickerchamp.widgets
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.padding

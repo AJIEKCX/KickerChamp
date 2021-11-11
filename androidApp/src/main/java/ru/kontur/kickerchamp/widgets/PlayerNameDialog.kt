@@ -1,4 +1,4 @@
-package ru.kontur.kickerchamp.common.widgets
+package ru.kontur.kickerchamp.widgets
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,8 +28,8 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import kotlinx.coroutines.delay
-import ru.kontur.kickerchamp.common.Dialog
 import ru.kontur.kickerchamp.DialogState
 import ru.kontur.kickerchamp.Player
 
@@ -41,7 +41,7 @@ fun PlayerNameDialog(
 ) {
     var name by rememberSaveable { mutableStateOf(state.player.name) }
 
-    Dialog(onCloseRequest = onDismiss) {
+    Dialog(onDismissRequest = onDismiss) {
         PlayerNameDialogContent(
             name = name,
             onNameChange = { name = it },

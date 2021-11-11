@@ -1,26 +1,15 @@
-import org.koin.core.context.startKoin
-import org.koin.dsl.module
-import ru.alexgladkov.odyssey.compose.DesktopScreenHost
-import ru.alexgladkov.odyssey.compose.extensions.setupWithRootController
-import ru.kontur.kickerchamp.db.Database
-import ru.kontur.kickerchamp.db.DatabaseDriverFactory
-import ru.kontur.kickerchamp.di.sharedModule
-import javax.swing.JFrame
-import javax.swing.SwingUtilities
+import androidx.compose.material.Text
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.application
+import androidx.compose.ui.window.rememberWindowState
 
-fun main() = SwingUtilities.invokeLater {
-    val koin = startKoin { modules(sharedModule, desktopModule) }.koin
-    val window = JFrame()
-    window.title = "Kicker Champ"
-    window.setSize(800, 600)
-
-    DesktopScreenHost(window)
-        .setupWithRootController(
-            startScreen = NavGraphDestinations.Main,
-            block = buildComposeNavigationGraph(koin)
-        )
-}
-
-private val desktopModule = module {
-    single { Database(DatabaseDriverFactory()) }
+fun main() = application {
+    Window(
+        onCloseRequest = ::exitApplication,
+        title = "Compose for Desktop",
+        state = rememberWindowState(width = 800.dp, height = 600.dp)
+    ) {
+        Text("Hello Kicker")
+    }
 }

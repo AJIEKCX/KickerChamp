@@ -7,8 +7,8 @@ import androidx.navigation.compose.rememberNavController
 import org.koin.androidx.compose.get
 import ru.kontur.kickerchamp.MainDestinations.HIGH_SCORES_ROUTE
 import ru.kontur.kickerchamp.MainDestinations.MAIN_ROUTE
-import ru.kontur.kickerchamp.common.highscores.HighScoresScreen
-import ru.kontur.kickerchamp.common.main.MainScreen
+import ru.kontur.kickerchamp.highscores.HighScoresScreen
+import ru.kontur.kickerchamp.main.MainScreen
 
 object MainDestinations {
     const val MAIN_ROUTE = "main"

@@ -1,4 +1,4 @@
-package ru.kontur.kickerchamp.common.widgets
+package ru.kontur.kickerchamp.widgets
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -12,7 +12,7 @@ import ru.kontur.kickerchamp.Player
 @Composable
 fun PlayersWidget(
     players: List<Player>,
-    onAddOrReplacePlayer: (Player) -> Unit
+    onAddOrEditPlayer: (Player) -> Unit
 ) {
     val alignments = listOf(
         Alignment.TopStart,
@@ -22,7 +22,7 @@ fun PlayersWidget(
     )
     Box(Modifier.fillMaxSize().background(MaterialTheme.colors.background)) {
         players.forEachIndexed { index, player ->
-            PlayerCard(player, onAddOrReplacePlayer, Modifier.align(alignments[index]))
+            PlayerCard(player, onAddOrEditPlayer, Modifier.align(alignments[index]))
         }
     }
 }
