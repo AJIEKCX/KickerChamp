@@ -5,6 +5,8 @@ struct NonStartedGameView: View {
   @EnvironmentObject
   var wrapper: MainScreenStoreWrapper
 
+  let isStartButtonEnabled: Bool
+
   var body: some View {
     VStack {
       ScrollView {
@@ -15,7 +17,7 @@ struct NonStartedGameView: View {
           "Start game",
           action: { wrapper.store.onStartGameClicked() }
         )
-          .disabled(!wrapper.state.isStartButtonEnabled)
+          .disabled(!isStartButtonEnabled)
           .buttonStyle(.borderedProminent)
           .frame(maxWidth: .infinity)
         NavigationLink(destination: HighScoresView()) {
@@ -35,8 +37,8 @@ struct NonStartedGameView: View {
 struct NonStartedGameView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      NonStartedGameView()
-      NonStartedGameView()
+      NonStartedGameView(isStartButtonEnabled: true)
+      NonStartedGameView(isStartButtonEnabled: false)
         .preferredColorScheme(.dark)
         .previewInterfaceOrientation(.landscapeLeft)
     }

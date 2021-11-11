@@ -1,14 +1,5 @@
 import shared
 
-extension MainScreenState {
-  var isStartButtonEnabled: Bool {
-    if let nonStarted = gameState as? GameState.NonStarted {
-      return nonStarted.isStartButtonEnabled
-    }
-    return false
-  }
-}
-
 enum MainTeam {
   case blue
   case red
