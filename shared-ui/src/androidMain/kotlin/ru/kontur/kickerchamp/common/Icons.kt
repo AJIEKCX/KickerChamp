@@ -1,6 +1,7 @@
 package ru.kontur.kickerchamp.common
 
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -10,6 +11,7 @@ internal actual fun IncrementIcon(modifier: Modifier) {
     Icon(
         painterResource(R.drawable.ic_increment),
         contentDescription = null,
+        tint = MaterialTheme.colors.onBackground,
         modifier = modifier
     )
 }

@@ -1,7 +1,9 @@
 package ru.kontur.kickerchamp.common.widgets
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,7 +20,7 @@ fun PlayersWidget(
         Alignment.TopEnd,
         Alignment.BottomEnd
     )
-    Box(Modifier.fillMaxSize()) {
+    Box(Modifier.fillMaxSize().background(MaterialTheme.colors.background)) {
         players.forEachIndexed { index, player ->
             PlayerCard(player, onAddOrReplacePlayer, Modifier.align(alignments[index]))
         }

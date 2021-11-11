@@ -27,7 +27,6 @@ sealed class GameState {
     ) : GameState()
 
     data class Finished(
-        val winnerTeam: Team,
-        val winner: String
+        val winnerTeam: Team
     ): GameState()
 }

@@ -13,7 +13,7 @@ class HighScoreStore(database: Database) {
 
     val state = database.observePlayerScores()
         .map { HighScoreState(createOrderedPlayerScores(it)) }
-        .stateIn(coroutineScope, SharingStarted.WhileSubscribed(), HighScoreState())
+        .stateIn(coroutineScope, SharingStarted.Eagerly, HighScoreState())
 
     private fun createOrderedPlayerScores(scores: List<PlayerScore>): List<OrderedPlayerScores> {
         return scores.mapIndexed { index: Int, item: PlayerScore ->
