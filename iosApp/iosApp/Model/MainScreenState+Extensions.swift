@@ -31,7 +31,6 @@ enum MainGameState: Hashable {
   case started(Started)
   struct Finished: Hashable {
     let winnerTeam: MainTeam
-    let winner: String
   }
   case finished(Finished)
 
@@ -49,8 +48,7 @@ enum MainGameState: Hashable {
     }
     if let finished = gameState as? GameState.Finished {
       self = .finished(.init(
-        winnerTeam: MainTeam.create(finished.winnerTeam),
-        winner: finished.winner
+        winnerTeam: MainTeam.create(finished.winnerTeam)
       ))
       return
     }

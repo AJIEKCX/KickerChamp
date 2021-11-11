@@ -5,7 +5,7 @@ struct StartedGameView: View {
   @EnvironmentObject
   var wrapper: MainScreenStoreWrapper
 
-  let state: MainGameState.Started
+  var state: MainGameState.Started
 
   var body: some View {
     VStack {
@@ -62,33 +62,35 @@ struct PlayerScoreView: View {
           .font(.title.monospacedDigit())
           .accessibilityLabel("\(name) Team Score: \(score)")
         HStack {
-          Button("-", action: {
-            onDecrement()
-          })
-            .buttonBorderShape(.capsule)
-            .buttonStyle(.bordered)
+          Button(action: {
+              onDecrement()
+          }) {
+            Text("—")
+              .frame(maxWidth: .infinity)
+          }
             .disabled(score < 1)
-          Button("+", action: {
-            onIncrement()
-          })
-            .buttonBorderShape(.capsule)
-            .buttonStyle(.bordered)
+          Button(action: {
+              onIncrement()
+          }) {
+            Text("+")
+              .frame(maxWidth: .infinity)
+          }
             .disabled(score > 9)
         }
+        .padding(.horizontal)
+        .buttonBorderShape(.roundedRectangle)
+        .buttonStyle(.bordered)
         .controlSize(.large)
-        LazyVGrid(
-          columns: [GridItem(.adaptive(minimum: 44))],
-          alignment: .center
-        ) {
-          ForEach(0..<(winScore+1)) { number in
-            Button("\(number)", action: {
-              onSet(Int32(number))
-            })
-              .buttonStyle(.bordered)
-              .disabled(number == score)
-              .lineLimit(1)
+        HStack {
+          ForEach(0..<(winScore+1), id: \.self) { number in
+            RoundedRectangle(cornerRadius: 4)
+              .frame(width: number == score ? 16 : 8, height: 8)
+              .id(number)
           }
+          .animation(.default, value: score)
+//          .animation(.default)
         }
+        .padding()
       }
     }
     .foregroundColor(color)
@@ -101,7 +103,6 @@ struct StartedGameView_Previews: PreviewProvider {
       StartedGameView(state: .init(blueScore: 0, redScore: 4))
         .previewDevice("iPod touch (7th generation)")
       StartedGameView(state: .init(blueScore: 6, redScore: 4))
-
     }
       .environmentObject(MainScreenStoreWrapper())
   }

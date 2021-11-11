@@ -17,7 +17,6 @@ struct FinishedGameView: View {
         startPoint: animateGradient ? .topLeading : .topTrailing,
         endPoint: animateGradient ? .bottomTrailing : .bottomLeading
       )
-
         .ignoresSafeArea()
         .onAppear {
           withAnimation(
@@ -28,7 +27,7 @@ struct FinishedGameView: View {
           }
         }
       VStack {
-        Text(state.winner)
+        Text(state.winnerTeam == .blue ? "Blue wins!" : "Red wins!")
           .foregroundColor(color(for: state.winnerTeam))
         Button("Start new game", action: { wrapper.store.onRestartGameClicked() })
           .buttonStyle(.borderedProminent)
