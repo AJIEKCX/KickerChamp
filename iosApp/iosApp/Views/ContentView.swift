@@ -25,6 +25,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView(gameState: .finished(.init(winnerTeam: .blue, winner: "Blue")))
+    ContentView(gameState: .finished(.init(winnerTeam: .blue)))
   }
 }
