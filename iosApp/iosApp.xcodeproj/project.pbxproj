@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
-		8D146EBE273E6257009948A6 /* shared.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D146EBD273E6257009948A6 /* shared.xcframework */; };
-		8D146EBF273E6257009948A6 /* shared.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8D146EBD273E6257009948A6 /* shared.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8D146EC2273E66CF009948A6 /* shared.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D146EBD273E6257009948A6 /* shared.xcframework */; };
+		8D146EC3273E66CF009948A6 /* shared.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8D146EBD273E6257009948A6 /* shared.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8D26021E2736743500F4F7B5 /* HighScoreStoreWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D26021D2736743500F4F7B5 /* HighScoreStoreWrapper.swift */; };
 		8D29D178272FB4E90049C018 /* MainScreenStoreWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29D177272FB4E90049C018 /* MainScreenStoreWrapper.swift */; };
 		8D29D17A272FC2840049C018 /* PlayerEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29D179272FC2840049C018 /* PlayerEditView.swift */; };
@@ -26,13 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8D146EC0273E6257009948A6 /* Embed Frameworks */ = {
+		8D146EC4273E66CF009948A6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8D146EBF273E6257009948A6 /* shared.xcframework in Embed Frameworks */,
+				8D146EC3273E66CF009948A6 /* shared.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,7 +46,6 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D146EB8273E3DDA009948A6 /* StartedGameView+Ref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StartedGameView+Ref.swift"; sourceTree = "<group>"; };
 		8D146EBD273E6257009948A6 /* shared.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = shared.xcframework; path = ../shared/build/XCFrameworks/debug/shared.xcframework; sourceTree = "<group>"; };
-		8D146EC1273E629D009948A6 /* iosApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosApp.entitlements; sourceTree = "<group>"; };
 		8D26021D2736743500F4F7B5 /* HighScoreStoreWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreStoreWrapper.swift; sourceTree = "<group>"; };
 		8D29D177272FB4E90049C018 /* MainScreenStoreWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenStoreWrapper.swift; sourceTree = "<group>"; };
 		8D29D179272FC2840049C018 /* PlayerEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEditView.swift; sourceTree = "<group>"; };
@@ -67,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D146EBE273E6257009948A6 /* shared.xcframework in Frameworks */,
+				8D146EC2273E66CF009948A6 /* shared.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +93,6 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				8D146EC1273E629D009948A6 /* iosApp.entitlements */,
 				8D44C6F5273D9094001C8706 /* Reference */,
 				8DD97F4127397C0B007F5F34 /* Helpers */,
 				8DD97F4027397BFC007F5F34 /* Model */,
@@ -207,7 +205,7 @@
 				7555FF77242A565900829871 /* Sources */,
 				7555FF78242A565900829871 /* Frameworks */,
 				7555FF79242A565900829871 /* Resources */,
-				8D146EC0273E6257009948A6 /* Embed Frameworks */,
+				8D146EC4273E66CF009948A6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
