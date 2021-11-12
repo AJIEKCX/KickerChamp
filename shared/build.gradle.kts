@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 
 plugins {
     kotlin("multiplatform")
@@ -7,18 +8,16 @@ plugins {
 }
 
 kotlin {
+    val xcf = XCFramework()
+
     jvm("desktop")
     android()
 
-    val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
-        System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
-        else -> ::iosX64
-    }
-
-    iosTarget("ios") {
+    ios {
         binaries {
             framework {
                 baseName = "shared"
+                xcf.add(this)
             }
         }
     }
