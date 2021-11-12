@@ -11,8 +11,8 @@ struct ContentView: View {
       case let .nonStarted(isStartButtonEnabled):
         NonStartedGameView(isStartButtonEnabled: isStartButtonEnabled)
           .navigationBarTitle("KickerChamp", displayMode: .inline)
-      case let .started(started):
-        StartedGameView(state: started)
+      case .started:
+        StartedGameView()
           .navigationBarTitle("Game ongoing", displayMode: .inline)
       case let .finished(finished):
         FinishedGameView(state: finished)

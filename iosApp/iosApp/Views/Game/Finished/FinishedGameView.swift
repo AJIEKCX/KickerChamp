@@ -22,12 +22,13 @@ struct FinishedGameView: View {
         Text("High scores")
       }
       .buttonStyle(.bordered)
-    }.offset(y: animated ? 0 : 300)
-      .onAppear {
-        withAnimation(.easeOut(duration: 0.35)) {
-          animated = true
-        }
+    }
+    .offset(y: animated ? 0 : 300)
+    .onAppear {
+      withAnimation(.easeOut(duration: 0.35)) {
+        animated = true
       }
+    }
   }
 
   private func color(for team: MainTeam) -> Color {
