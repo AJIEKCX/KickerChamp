@@ -24,7 +24,6 @@
 		8DD97F3F27397BB3007F5F34 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD97F3E27397BB3007F5F34 /* Database.swift */; };
 		8DDA49A3273E6804006B320D /* PlayersEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA49A2273E6804006B320D /* PlayersEditView.swift */; };
 		8DDA49A5273E6853006B320D /* Player+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA49A4273E6853006B320D /* Player+Extensions.swift */; };
-		8DDA49A7273E68D1006B320D /* PlayerEditView+Ref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA49A6273E68D1006B320D /* PlayerEditView+Ref.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -307,7 +306,6 @@
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				8DD97F3F27397BB3007F5F34 /* Database.swift in Sources */,
 				8D29D17A272FC2840049C018 /* PlayerEditView.swift in Sources */,
-				8DDA49A7273E68D1006B320D /* PlayerEditView+Ref.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
