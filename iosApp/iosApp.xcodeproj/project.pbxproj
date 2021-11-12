@@ -46,7 +46,7 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D146EB8273E3DDA009948A6 /* StartedGameView+Ref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StartedGameView+Ref.swift"; sourceTree = "<group>"; };
-		8D146EBD273E6257009948A6 /* shared.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = shared.xcframework; path = ../shared/build/XCFrameworks/debug/shared.xcframework; sourceTree = "<group>"; };
+		8D146EBD273E6257009948A6 /* shared.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = shared.xcframework; sourceTree = "<group>"; };
 		8D26021D2736743500F4F7B5 /* HighScoreStoreWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreStoreWrapper.swift; sourceTree = "<group>"; };
 		8D29D177272FB4E90049C018 /* MainScreenStoreWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenStoreWrapper.swift; sourceTree = "<group>"; };
 		8D29D179272FC2840049C018 /* PlayerEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEditView.swift; sourceTree = "<group>"; };
