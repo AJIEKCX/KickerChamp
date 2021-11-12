@@ -3,7 +3,13 @@ import shared
 
 struct PlayersEditView: View {
   var body: some View {
-    Text("Edit everyone")
+    Group {
+      Text("Edit everyone")
+      PlayerEditView()
+      PlayerEditView()
+      PlayerEditView()
+      PlayerEditView()
+    }
   }
 }
 
