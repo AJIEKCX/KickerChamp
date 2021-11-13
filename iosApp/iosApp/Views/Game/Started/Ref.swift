@@ -44,10 +44,6 @@ struct PlayerScoreView: View {
   let onSet: (Int32) -> Void
   let score: Int32
 
-  private var winScore: Int {
-    Int(MainScreenStore.companion.WIN_SCORE)
-  }
-
   var body: some View {
     VStack {
       VStack {
@@ -82,13 +78,12 @@ struct PlayerScoreView: View {
         .buttonStyle(.bordered)
         .controlSize(.large)
         HStack {
-          ForEach(0..<(winScore+1), id: \.self) { number in
+          ForEach(0..<(winScore()+1), id: \.self) { number in
             RoundedRectangle(cornerRadius: 4)
               .frame(width: number == score ? 16 : 8, height: 8)
               .id(number)
           }
           .animation(.default, value: score)
-//          .animation(.default)
         }
         .padding()
       }
@@ -106,4 +101,8 @@ struct StartedGameView_Previews: PreviewProvider {
     }
       .environmentObject(MainScreenStoreWrapper())
   }
+}
+
+private func winScore() -> Int {
+  Int(MainScreenStore.companion.WIN_SCORE)
 }

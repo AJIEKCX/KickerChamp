@@ -19,8 +19,6 @@ final class MainScreenStoreWrapper: ObservableObject {
   @Published
   private(set) var gameState: MainGameState = .nonStarted(isStartButtonEnabled: false)
 
-  private var generator = RandomNameGenerator()
-
   init() {
     subscribe()
   }
@@ -36,11 +34,5 @@ final class MainScreenStoreWrapper: ObservableObject {
       self.state = state
       self.gameState = .init(state.gameState)
     }
-  }
-
-  func randomizeName(for player: Player) {
-    let generatedName = generator.generate()
-    print("Generated name\r\t\(generatedName)")
-    store.onPlayerNameChanged(player: player, name: generatedName)
   }
 }

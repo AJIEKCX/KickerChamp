@@ -30,6 +30,10 @@ final class RandomNameGenerator {
     "Zulu",
   ]
 
+  static let shared = RandomNameGenerator()
+
+  private init() {}
+
   func generate() -> String {
     let index = (Int(0)..<words.count).randomElement()!
     return words[index] + "\((0..<1000).randomElement()!)"

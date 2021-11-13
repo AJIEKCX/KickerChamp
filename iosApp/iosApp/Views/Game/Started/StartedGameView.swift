@@ -1,26 +1,25 @@
 import SwiftUI
 import shared
 
-private func winScore() -> Int {
-  Int(MainScreenStore.companion.WIN_SCORE)
-}
-
 struct StartedGameView: View {
-  @State var blueScore: Int = 0
-  @State var redScore: Int = 0
+  @EnvironmentObject
+  var wrapper: MainScreenStoreWrapper
+
+  var state: MainGameState.Started
 
   var body: some View {
-    Text("Started game. Show scores and change.")
+    Text("Game just started.")
   }
 }
+
 struct StartedGameView_Previews: PreviewProvider {
   static var previews: some View {
-    Group {
-      StartedGameView(blueScore: 0, redScore: 4)
-        .previewLayout(.sizeThatFits)
-      StartedGameView(blueScore: 6, redScore: 4)
-        .previewDevice("iPod touch (7th generation)")
-        .previewInterfaceOrientation(.landscapeLeft)
-    }
+    StartedGameView(state: .init(blueScore: 0, redScore: 10))
+      .previewLayout(.sizeThatFits)
+    .environmentObject(MainScreenStoreWrapper())
   }
+}
+
+private func winScore() -> Int {
+  Int(MainScreenStore.companion.WIN_SCORE)
 }
