@@ -27,7 +27,6 @@ kotlin {
             dependencies {
                 implementation(libs.sqlDelightRuntime)
                 implementation(libs.sqlDelightCoroutinesExtensions)
-//                implementation(libs.kotlinCoroutines)
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0-native-mt")
                 implementation(libs.koin)
             }
