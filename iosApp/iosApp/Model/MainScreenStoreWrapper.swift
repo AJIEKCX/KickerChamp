@@ -17,7 +17,9 @@ final class MainScreenStoreWrapper: ObservableObject {
   )
 
   @Published
-  private(set) var gameState: MainGameState = .nonStarted(isStartButtonEnabled: false)
+  private(set) var gameState: MainGameState = .nonStarted(.init(
+    isStartButtonEnabled: false
+  ))
 
   init() {
     subscribe()

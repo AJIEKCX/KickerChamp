@@ -14,7 +14,10 @@ enum MainTeam {
 }
 
 enum MainGameState: Hashable {
-  case nonStarted(isStartButtonEnabled: Bool)
+  struct NonStarted: Hashable {
+    let isStartButtonEnabled: Bool
+  }
+  case nonStarted(NonStarted)
   struct Started: Hashable {
     let blueScore: Int32
     let redScore: Int32
@@ -27,22 +30,20 @@ enum MainGameState: Hashable {
 
   init(_ gameState: GameState) {
     if let nonStarted = gameState as? GameState.NonStarted {
-      self = .nonStarted(isStartButtonEnabled: nonStarted.isStartButtonEnabled)
-      return
-    }
-    if let started = gameState as? GameState.Started {
+      self = .nonStarted(.init(
+        isStartButtonEnabled: nonStarted.isStartButtonEnabled
+      ))
+    } else if let started = gameState as? GameState.Started {
       self = .started(.init(
         blueScore: started.blueScore,
         redScore: started.redScore
       ))
-      return
-    }
-    if let finished = gameState as? GameState.Finished {
+    } else if let finished = gameState as? GameState.Finished {
       self = .finished(.init(
         winnerTeam: MainTeam.create(finished.winnerTeam)
       ))
-      return
+    } else {
+      fatalError("Unknown sealed class instance \(gameState)")
     }
-    self = .nonStarted(isStartButtonEnabled: false)
   }
 }

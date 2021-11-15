@@ -8,8 +8,8 @@ struct ContentView: View {
   var body: some View {
     NavigationView {
       switch gameState {
-      case let .nonStarted(isStartButtonEnabled):
-        NonStartedGameView(isStartButtonEnabled: isStartButtonEnabled)
+      case let .nonStarted(nonStarted):
+        NonStartedGameView(state: nonStarted)
           .navigationBarTitle("KickerChamp", displayMode: .inline)
       case let .started(started):
         StartedGameView(state: started)
