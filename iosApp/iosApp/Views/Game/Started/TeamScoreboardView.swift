@@ -18,6 +18,7 @@ struct TeamScoreboardView_Previews: PreviewProvider {
       onIncrement: {},
       score: 0
     )
+    .previewLayout(.sizeThatFits)
   }
 }
 

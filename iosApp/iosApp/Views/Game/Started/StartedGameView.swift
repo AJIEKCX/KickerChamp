@@ -17,7 +17,6 @@ struct StartedGameView: View {
 struct StartedGameView_Previews: PreviewProvider {
   static var previews: some View {
     StartedGameView(state: .init(blueScore: 0, redScore: 10))
-      .previewLayout(.sizeThatFits)
     .environmentObject(MainScreenStoreWrapper())
   }
 }
