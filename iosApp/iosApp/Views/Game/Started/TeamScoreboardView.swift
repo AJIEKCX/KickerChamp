@@ -13,7 +13,6 @@ struct TeamScoreboardView: View {
 }
 
 struct TeamScoreboardView_Previews: PreviewProvider {
-
   static var previews: some View {
     TeamScoreboardView(
       onIncrement: {},
