@@ -5,10 +5,12 @@ struct StartedGameView: View {
   @EnvironmentObject
   var wrapper: MainScreenStoreWrapper
 
-  var state: MainGameState.Started
+  var state: MainGameState.Started // blueScore: Int; redScore: Int
 
   var body: some View {
-    Text("Game just started.")
+    VStack {
+      Text("Game just started. We should manage score!")
+    }
   }
 }
 

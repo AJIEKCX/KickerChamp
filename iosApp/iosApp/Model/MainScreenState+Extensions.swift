@@ -19,8 +19,8 @@ enum MainGameState: Hashable {
   }
   case nonStarted(NonStarted)
   struct Started: Hashable {
-    let blueScore: Int32
-    let redScore: Int32
+    let blueScore: Int
+    let redScore: Int
   }
   case started(Started)
   struct Finished: Hashable {
@@ -35,8 +35,8 @@ enum MainGameState: Hashable {
       ))
     } else if let started = gameState as? GameState.Started {
       self = .started(.init(
-        blueScore: started.blueScore,
-        redScore: started.redScore
+        blueScore: Int(started.blueScore),
+        redScore: Int(started.redScore)
       ))
     } else if let finished = gameState as? GameState.Finished {
       self = .finished(.init(
